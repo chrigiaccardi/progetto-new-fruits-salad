@@ -1,10 +1,13 @@
-<div class="bg-gradient-to-r from-white to-green-100 h-full">
+<div class="bg-gradient-to-r from-white to-green-100 h-auto">
     <app-header />
     <mat-divider class="w-full" />
 <div class="flex flex-col items-center">
     <app-macedonia-card />
         <div class="grid">
             <p>griglia card frutta da gestire sia a livello mobile che desktop</p>
+            @for (frutto of listaFrutta(); track frutto.id){
+                <app-frutta-card [frutto]="frutto"/>
+            }
         </div>
 </div>
     

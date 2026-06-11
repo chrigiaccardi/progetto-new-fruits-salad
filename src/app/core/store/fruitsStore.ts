@@ -1,9 +1,9 @@
 import { httpResource } from '@angular/common/http';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals'
-import { Frutta } from '../models/frutta';
+import { Frutto } from '../models/frutto';
 
-// Api per richiesta HTTP
-const apiFrutta:string = 'https://api/fruits'
+// Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
+const apiFrutta:string = '/api/fruit'
 
 export type FruitsState = {
     filtroRicerca: string;
@@ -17,15 +17,15 @@ export const FruitsStore = signalStore(
     } as FruitsState),
 
     withMethods((store) => {
-        const rispostaFrutta = httpResource<Frutta[]>(() => ({
+        const rispostaFrutta = httpResource<Frutto[]>(() => ({
             url: `${apiFrutta}/all`,
             method: 'GET'
         }))
         
         return {
-            listaFrutti: rispostaFrutta.value,
-            caricamentoListaFrutti: rispostaFrutta.isLoading,
-            erroreListaFrutti: rispostaFrutta.error,
+            listaFrutta: rispostaFrutta.value,
+            caricamentoListaFrutta: rispostaFrutta.isLoading,
+            erroreListaFrutta: rispostaFrutta.error,
 
             ricaricareListaFrutti: () => {
                 rispostaFrutta.reload()

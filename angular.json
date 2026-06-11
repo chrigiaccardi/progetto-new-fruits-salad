@@ -59,7 +59,8 @@
               "buildTarget": "2o-progetto-angular-s2i:build:production"
             },
             "development": {
-              "buildTarget": "2o-progetto-angular-s2i:build:development"
+              "buildTarget": "2o-progetto-angular-s2i:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
