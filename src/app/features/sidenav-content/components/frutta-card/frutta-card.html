@@ -1,17 +1,28 @@
 <div class="flex flex-col p-3 m-2 bg-gradient-to-r from-green-100 to-white rounded-xl shadow-xl">
-   <div class="flex items-center justify-between w-full">
+    <div class="flex items-center justify-between w-full">
         <h2 class="text-lg">{{frutto().name}}</h2>
         <p class="text-sm text-gray-400">ID:{{frutto().id}}</p>
-   </div>
-   <mat-divider class="w-full"/>
-   <div class="mt-2">
-    <p>Famiglia: {{frutto().family}}</p>
-    <p>Genere: {{frutto().genus}}</p>
-    <p>Ordine: {{frutto().order}}</p>
-    <div class="flex justify-between items-center">
-        <p>Nutrienti ➡️ </p>
-        <button matButton>Apri Elenco</button>
     </div>
-   </div>
+    <mat-divider class="w-full" />
+    <div class="mt-2 flex flex-col">
+        <p>Famiglia: {{frutto().family}}</p>
+        <p>Genere: {{frutto().genus}}</p>
+        <p>Ordine: {{frutto().order}}</p>
+        <div class="flex justify-between items-center">
+            <p>Nutrienti ➡️ </p>
+            <button matButton>Apri Elenco</button>
+        </div>
+        @if() {
+            <div class="grid grid-cols-2">
+                <p>Calorie: {{frutto().nutritions.calories}}</p>
+                <p>Carboidrati: {{frutto().nutritions.carbohydrates}}</p>
+                <p>Grasso: {{frutto().nutritions.fat}}</p>
+                <p>Proteine: {{frutto().nutritions.protein}}</p>
+                <p>Zucchero: {{frutto().nutritions.sugar}}</p>
+            </div>
+        }
+
+        <button matButton>Aggiungi</button>
+    </div>
 
 </div>
