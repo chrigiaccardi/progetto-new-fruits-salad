@@ -1,4 +1,4 @@
-<div class="flex flex-col p-3 m-2 bg-gradient-to-r from-green-100 to-white rounded-xl shadow-xl">
+<div class="flex flex-col p-3 m-2 bg-gradient-to-r from-green-100 to-white rounded-xl shadow-xl" animate.enter="apri-card">
     <div class="flex items-center justify-between w-full">
         <h2 class="text-lg">{{frutto().name}}</h2>
         <p class="text-sm text-gray-400">ID:{{frutto().id}}</p>
@@ -10,10 +10,10 @@
         <p>Ordine: {{frutto().order}}</p>
         <div class="flex justify-between items-center">
             <p>Nutrienti ➡️ </p>
-            <button matButton>Apri Elenco</button>
+            <button (click)="toggleValNut()" matButton class="!text-green-700"> {{valNut() === true ? 'Chiudi Elenco' : 'Apri Elenco'}} </button>
         </div>
-        @if() {
-            <div class="grid grid-cols-2">
+        @if(valNut()) {
+            <div class="grid grid-cols-2" animate.enter="apri-elenco" animate.leave="chiudi-elenco">
                 <p>Calorie: {{frutto().nutritions.calories}}</p>
                 <p>Carboidrati: {{frutto().nutritions.carbohydrates}}</p>
                 <p>Grasso: {{frutto().nutritions.fat}}</p>
@@ -21,8 +21,7 @@
                 <p>Zucchero: {{frutto().nutritions.sugar}}</p>
             </div>
         }
-
-        <button matButton>Aggiungi</button>
+        <button matButton class="!text-green-700">Aggiungi</button>
     </div>
 
 </div>

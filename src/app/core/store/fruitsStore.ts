@@ -1,6 +1,7 @@
 import { httpResource } from '@angular/common/http';
 import { patchState, signalStore, withMethods, withState } from '@ngrx/signals'
 import { Frutto } from '../models/frutto';
+import { Signal, signal } from '@angular/core';
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
 const apiFrutta:string = '/api/fruit'
@@ -30,6 +31,7 @@ export const FruitsStore = signalStore(
             ricaricareListaFrutti: () => {
                 rispostaFrutta.reload()
             },
+
         }
     })
 

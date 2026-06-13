@@ -1,0 +1,47 @@
+/* Con Animate.enter andiamo a creare un effetto navigazione per l'ingresso e l'uscita del vid elenco */
+.apri-elenco {
+    animation: apri-elenco 300ms ease-out;
+  }
+  
+  @keyframes apri-elenco {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+.chiudi-elenco {
+    animation: chiudi-elenco 220ms ease-in;
+  }
+  
+  @keyframes chiudi-elenco {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  .apri-card {
+    animation: apri-elenco 800ms ease-out;
+  }
+  
+  @keyframes apri-elenco {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+
+    }
+  }
