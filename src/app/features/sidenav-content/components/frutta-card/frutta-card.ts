@@ -1,8 +1,9 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { Frutto } from '../../../../core/models/frutto';
 import { MatDividerModule } from "@angular/material/divider";
 import { MatButtonModule } from "@angular/material/button"
 import { MatIconModule } from '@angular/material/icon';
+import { FruitsStore } from '../../../../core/store/fruitsStore';
 
 @Component({
   selector: 'app-frutta-card',
@@ -13,6 +14,9 @@ import { MatIconModule } from '@angular/material/icon';
 export class FruttaCard {
   // importiamo in input i dati con il binding
   frutto = input.required<Frutto>()
+
+  // Importiamo lo store per poterlo utilizzare
+  fruitsStore = inject(FruitsStore)
 
   // Bottone Apri elenco valori nutrizionali
   valNut = signal(false);

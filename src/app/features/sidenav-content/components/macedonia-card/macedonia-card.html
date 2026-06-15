@@ -1,1 +1,53 @@
-<p>macedonia-card works!</p>
+<div class="mt-5 rounded-xl shadow-xl p-5 bg-gradient-to-r from-orange-100 to-yellow-100 text-lg"
+    animate.enter="apri-card">
+    @if(fruitsStore.macedonia().length === 0){
+    <div class="flex items-center">
+        <p>Aggiungi frutta alla tua Macedonia e scopri i valori nutrizionali!</p>
+    </div>
+    } @else {
+    <div class="flex flex-col items-center gap-3" animate.enter="apri-card">
+        <p class="">La tua <strong>Macedonia</strong> contiene:</p>
+        <mat-chip-set>
+            @for (frutto of fruitsStore.macedonia(); track frutto.id) {
+            <mat-chip (removed)="fruitsStore.rimuoviDaMacedonia(frutto)">
+                {{frutto.name}}
+                <button matChipRemove>
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip>
+            }
+        </mat-chip-set>
+        <p>e in totale i valori nutrizionali sono:</p>
+        <div class="flex flex-col w-full">
+            <ul>
+                <li class="flex flex-row items-center justify-around mb-2">
+                    Calorie:
+                    <img width="32" height="32" src="/icons8-energia-calorica-96.png" alt="simbolo-calorie">
+                    {{fruitsStore.totaliNutrienti().calorie | number: '.0-2'}}g
+                </li>
+                <li class="flex flex-row items-center justify-around mb-2">
+                    <p>Carboidrati:</p>
+                    <img width="32" height="32" src="/icons8-carboidrati-96.png" alt="simbolo-calorie">
+                    <p>{{fruitsStore.totaliNutrienti().carboidrati | number: '.0-2'}}g</p>
+                </li>
+                <li class="flex flex-row items-center justify-around mb-2">
+                    Grassi:
+                    <img width="32" height="32" src="/icons8-cibo-per-suini-96.png" alt="simbolo-calorie">
+                    {{fruitsStore.totaliNutrienti().grassi | number: '.0-2'}}g
+                </li>
+                <li class="flex flex-row items-center justify-around mb-2">
+                    Proteine:
+                    <img width="32" height="32" src="/icons8-carne-96.png" alt="simbolo-calorie">
+                    {{fruitsStore.totaliNutrienti().proteine | number: '.0-2'}}g
+                </li>
+                <li class="flex flex-row items-center justify-around mb-2">
+                    Zuccheri:
+                    <img width="32" height="32" src="/icons8-zucchero-96.png" alt="simbolo-calorie">
+                    {{fruitsStore.totaliNutrienti().zuccheri | number: '.0-2'}}g
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    }
+</div>
