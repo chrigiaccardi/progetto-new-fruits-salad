@@ -1,1 +1,5 @@
-<p>header works!</p>
+<div class="flex md:justify-center ">
+    <input type="text" matInput placeholder="Cerca il tuo frutto preferito"
+        (input)="fruitsStore.setFiltroRicerca(($event.target).value)"
+        class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 w-full shadow-xl">
+</div>

@@ -48,16 +48,21 @@ export const FruitsStore = signalStore(
             },
             svuotaMacedonia: () => {
                 patchState(store, {macedonia: [] })
+            },
+
+            // Creiamo un metodo per poter settare il filtroRicerca
+            setFiltroRicerca: (testo: string) => {
+                patchState(store, {filtroRicerca: testo})
             }
 
         }
     }),
 
-    withComputed(({ macedonia }) => ({
+    withComputed((store) => ({
         // I nutrienti Totali li calcoliamo con un computed visto che vengono gestiti all'interno della macedonia
         // e ritorniamo il reduce tra accumulatore e il frutto in entrata partendo da 0
         totaliNutrienti: computed(() => {
-            return macedonia().reduce(
+            return store.macedonia().reduce(
                 (acc, frutto) => ({
                     calorie: acc.calorie + frutto.nutritions.calories,
                     carboidrati: acc.carboidrati + frutto.nutritions.carbohydrates,
@@ -66,6 +71,15 @@ export const FruitsStore = signalStore(
                     zuccheri: acc.zuccheri + frutto.nutritions.sugar,
                 }),
                 {calorie: 0, carboidrati: 0, proteine: 0, grassi: 0, zuccheri: 0,}
+            )
+        }),
+
+        // Creiamo la lista frutti filtrata così da poterla filtrare con la barra di ricerca
+        listaFruttiFiltrata: computed(() => {
+            const testoRicerca = store.filtroRicerca().toLowerCase().trim();
+            if (!testoRicerca) return store.listaFrutta();
+            return store.listaFrutta()?.filter(f =>
+                f.name.toLowerCase().includes(testoRicerca)
             )
         })
     }))

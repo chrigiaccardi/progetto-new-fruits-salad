@@ -18,7 +18,8 @@ export class SidenavContent {
   fruitsStore = inject(FruitsStore)
 
   // Importiamo dallo store i seguenti valori
-  readonly listaFrutta = this.fruitsStore.listaFrutta;
   readonly caricamentoListaFrutta = this.fruitsStore.caricamentoListaFrutta;
   readonly erroreListaFrutta = this.fruitsStore.erroreListaFrutta;
+  readonly listaFruttiFiltrata = this.fruitsStore.listaFruttiFiltrata
+  readonly listaFrutta = this.fruitsStore.listaFrutta
 }
