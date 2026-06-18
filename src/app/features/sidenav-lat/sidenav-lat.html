@@ -2,34 +2,38 @@
     <div class="flex flex-col items-center justify-center m-5 gap-4">
         <img src="/gruppo-di-frutta.png" alt="Logo Fruits Salad Mix">
         <h1 class="font-bold text-green-700 text-xl">Fruits Salad Mix</h1>
-        <p>Fruits Salad Mix è un calcolatore di nutrienti per la tua macedonia. 
+        <p>Fruits Salad Mix è un calcolatore di nutrienti per la tua macedonia.
             Aggiungi tutta la frutta che vuoi per avere un quadro completo della tua macedonia!
             Inizia subito!!
         </p>
     </div>
-    <mat-divider class="w-full"/>
-    <div class="flex flex-col items-center justify-center m-5">
-     <label class="block mt-4 text-sm font-medium">Famiglia</label>
-     <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onFamigliaCambia($event)">
-        <option value="">Tutte</option>
-        @for (fam of famiglieDisponibili(); track fam) {
+    <mat-divider class="w-full" />
+    <div class="flex flex-col items-center justify-center m-5 gap-3">
+        <p class="text-green-700 font-bold text-xl">Filtri:</p>
+        <label class="block mt-4 text-sm font-medium">Famiglia</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onFamigliaCambia($event)">
+            <option value="">Tutte</option>
+            @for (fam of famiglieDisponibili(); track fam) {
             <option [value]="fam">{{fam}}</option>
-        }
-     </select>
-    <label class="block mt-4 text-sm font-medium">Ordine</label>
-    <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onOrdineCambia($event)">
-        <option value="">Tutti</option>
-        @for (ord of ordiniDisponibili(); track ord) {
-            <option [value]="ord">{{ord}}</option>
-        }
-     </select>
-    <label class="block mt-4 text-sm font-medium">Genere</label>
-    <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onGenereCambia($event)">
-        <option value="">Tutti</option>
-        @for (gen of generiDisponibili(); track gen) {
-            <option [value]="gen">{{gen}}</option>
-        }
-     </select>
-    </div>
-</div>
+            }
+        </select>
 
+          <label class="block mt-4 text-sm font-medium">Genere</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onGenereCambia($event)">
+            <option value="">Tutti</option>
+            @for (gen of generiDisponibili(); track gen) {
+            <option [value]="gen">{{gen}}</option>
+            }
+        </select>
+
+        <label class="block mt-4 text-sm font-medium">Ordine</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full" (change)="onOrdineCambia($event)">
+            <option value="">Tutti</option>
+            @for (ord of ordiniDisponibili(); track ord) {
+            <option [value]="ord">{{ord}}</option>
+            }
+        </select>
+      
+    </div>
+    <button matButton class="!text-green-700 shadow-md !bg-green-100 mt-4" (click)="fruitsStore.resetFiltri()">Reset Totale Filtri</button>
+</div>

@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import {MatDividerModule} from '@angular/material/divider';
 import { FruitsStore } from '../../core/store/fruitsStore';
+import { MatAnchor } from "@angular/material/button";
 
 @Component({
   selector: 'app-sidenav-lat',
-  imports: [MatDividerModule,],
+  imports: [MatDividerModule, MatAnchor],
   templateUrl: './sidenav-lat.html',
   styleUrl: './sidenav-lat.css',
 })

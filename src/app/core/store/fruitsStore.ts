@@ -101,22 +101,32 @@ export const FruitsStore = signalStore(
 
         // Creiamo la lista frutti filtrata così da poterla filtrare con la barra di ricerca
         listaFruttiFiltrata: computed(() => {
+            // Eseguiamo la lettura dei risultati dei filtri
             const testoRicerca = store.filtroRicerca().toLowerCase().trim();
             const famigliaSelect = store.famigliaSelezionata().toLowerCase().trim();
             const ordineSelect = store.ordineSelezionato().toLowerCase().trim();
             const genereSelect = store.genereSelezionato().toLowerCase().trim();
 
-            if (!testoRicerca) return store.listaFrutta();
+            // Se tutti i filtri sono azzerati allora restituisci la listaFrutta completa come da lettura backend
+            if (!testoRicerca && !famigliaSelect && !ordineSelect && !genereSelect) return store.listaFrutta();
 
+            // Eseguiamo un filtrattio della listaFrutta, la calback frutto restituisce, per ogni frutto, true se deve essere tenuto e false se scartato
             return store.listaFrutta()?.filter(frutto => {
-                const matchNome = frutto.name.toLowerCase().includes(testoRicerca);
-                const matchFamiglia = frutto.family.toLowerCase() === famigliaSelect;
-                const matchOrdine = frutto.order.toLowerCase() === ordineSelect;
-                const matchGenere = frutto.genus.toLowerCase() === genereSelect;
+                // In questo caso utilizziamo OR || per dire: se la prima condizione è vera restituisci quella altrimenti l'altra.
+                // Di conseguenza se testoRicerca è vuoto, quindi vero si ferma li, se il testo è riempito, non vuoto, quindi falso e restituisce il filtro
+                const matchNome = !testoRicerca || frutto.name.toLowerCase().includes(testoRicerca);
+                const matchFamiglia = !famigliaSelect || frutto.family.toLowerCase() === famigliaSelect;
+                const matchOrdine = !ordineSelect || frutto.order.toLowerCase() === ordineSelect;
+                const matchGenere = !genereSelect || frutto.genus.toLowerCase() === genereSelect;
+
+                // Da queste condizioni ritorniamo i frutti che matchano le varie condizioni
+                return matchNome && matchFamiglia && matchOrdine && matchGenere
             })
         }),
 
         // Creiamo i computed di famiglie, ordine e genere direttamente mappando quelli in ingresso con i frutti
+        // Set viene utilizzato per non ammettere duplicati, quindi se ci sono più frutti con la stessa famiglia non scriva la stessa famiglia più volte ma solo una
+        // ... new con lo spread operator spalma il contenuto dell'oggetto set dentro un array, visto che lo utilizziamo con il ciclo for per il select
         famiglieDisponibili: computed(() => [
             ...new Set(store.listaFrutta()?.map(f => f.family))
         ]),
