@@ -9,6 +9,9 @@ const apiFrutta:string = '/api/fruit'
 export type FruitsState = {
     filtroRicerca: string;
     macedonia: Frutto[];
+    famigliaSelezionata: string;
+    genereSelezionato: string;
+    ordineSelezionato: string;
 }
 
 export const FruitsStore = signalStore(
@@ -16,7 +19,10 @@ export const FruitsStore = signalStore(
 
     withState({
         filtroRicerca: '',
-        macedonia: []
+        macedonia: [],
+        famigliaSelezionata: '',
+        genereSelezionato: '',
+        ordineSelezionato: '',
     } as FruitsState),
 
     withMethods((store) => {
@@ -53,6 +59,25 @@ export const FruitsStore = signalStore(
             // Creiamo un metodo per poter settare il filtroRicerca
             setFiltroRicerca: (testo: string) => {
                 patchState(store, {filtroRicerca: testo})
+            },
+
+            // Creiamo il metodo per settare la famiglia, l'ordine e i genere del frutto
+            setFamigliaSelezionata: (testo: string) => {
+                patchState(store, {famigliaSelezionata: testo})
+            },
+            setOrdineSelezionato: (testo: string) => {
+                patchState(store, {ordineSelezionato: testo})
+            },
+            setGenereSelezionato: (testo: string) => {
+                patchState(store, {genereSelezionato: testo})
+            },
+            resetFiltri: () => {
+                patchState(store, {
+                    filtroRicerca: '',
+                    famigliaSelezionata: '',
+                    ordineSelezionato: '',
+                    genereSelezionato: '',
+                })
             }
 
         }
@@ -77,11 +102,31 @@ export const FruitsStore = signalStore(
         // Creiamo la lista frutti filtrata così da poterla filtrare con la barra di ricerca
         listaFruttiFiltrata: computed(() => {
             const testoRicerca = store.filtroRicerca().toLowerCase().trim();
+            const famigliaSelect = store.famigliaSelezionata().toLowerCase().trim();
+            const ordineSelect = store.ordineSelezionato().toLowerCase().trim();
+            const genereSelect = store.genereSelezionato().toLowerCase().trim();
+
             if (!testoRicerca) return store.listaFrutta();
-            return store.listaFrutta()?.filter(f =>
-                f.name.toLowerCase().includes(testoRicerca)
-            )
-        })
+
+            return store.listaFrutta()?.filter(frutto => {
+                const matchNome = frutto.name.toLowerCase().includes(testoRicerca);
+                const matchFamiglia = frutto.family.toLowerCase() === famigliaSelect;
+                const matchOrdine = frutto.order.toLowerCase() === ordineSelect;
+                const matchGenere = frutto.genus.toLowerCase() === genereSelect;
+            })
+        }),
+
+        // Creiamo i computed di famiglie, ordine e genere direttamente mappando quelli in ingresso con i frutti
+        famiglieDisponibili: computed(() => [
+            ...new Set(store.listaFrutta()?.map(f => f.family))
+        ]),
+        generiDisponibili: computed(() => [
+            ...new Set(store.listaFrutta()?.map(f => f.genus))
+        ]),
+        ordiniDisponibili: computed(() => [
+            ...new Set(store.listaFrutta()?.map(f => f.order))
+        ]),
+
     }))
 
     
