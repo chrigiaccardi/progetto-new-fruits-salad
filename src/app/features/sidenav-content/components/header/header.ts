@@ -2,10 +2,13 @@ import { Component, inject, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog'
 import { MatInputModule } from "@angular/material/input";
 import { FruitsStore } from '../../../../core/store/fruitsStore';
+import { MatAnchor } from "@angular/material/button";
+import { MatIcon } from "@angular/material/icon";
+import { AggiungiFruttoDialog } from './components/aggiungi-frutto-dialog/aggiungi-frutto-dialog';
 
 @Component({
   selector: 'app-header',
-  imports: [MatInputModule],
+  imports: [MatInputModule, MatAnchor, MatIcon],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -19,4 +22,8 @@ export class Header {
 
   readonly erroreRicerca = signal(false)
 
+  // Metodo per aprire il dialog
+  apriDialogAggiungiFrutto() {
+    this.matDialog.open(AggiungiFruttoDialog)
+  }
 }
