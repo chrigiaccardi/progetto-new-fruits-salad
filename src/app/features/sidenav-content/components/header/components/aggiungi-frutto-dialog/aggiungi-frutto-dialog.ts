@@ -2,14 +2,14 @@ import { Component, inject } from '@angular/core';
 import { MatDialogTitle, MatDialogClose, MatDialogContent } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { FruitsStore } from '../../../../../../core/store/fruitsStore';
-import { MatFormField, MatInputModule } from "@angular/material/input";
-import {MatSelectModule} from '@angular/material/select'
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from '@angular/material/select'
 
 @Component({
   selector: 'app-aggiungi-frutto-dialog',
-  imports: [MatDialogTitle, MatButtonModule, MatDialogClose, MatSelectModule, MatIcon, MatDialogContent, MatFormField, MatInputModule],
+  imports: [MatDialogTitle, MatButtonModule, MatDialogClose, MatSelectModule, MatIcon, MatDialogContent, MatInputModule],
   templateUrl: './aggiungi-frutto-dialog.html',
   styleUrl: './aggiungi-frutto-dialog.css',
 })
@@ -28,6 +28,21 @@ export class AggiungiFruttoDialog {
   // Dichiariamo che il form ha determinati campi,
   // I Validatori si accertano che siano validi e required che  sono obbligatori
   aggiungiFruttoForm = this.formBuilder.group({
-
+    name: this.formBuilder.control<string>('', [Validators.required]),
+    family: this.formBuilder.control<string>('', [Validators.required]),
+    genus: this.formBuilder.control<string>('', [Validators.required]),
+    order: this.formBuilder.control<string>('', [Validators.required]),
+  
+    nutritions: this.formBuilder.group({
+      carbohydrates: this.formBuilder.control<number | null>(null, [Validators.required]),
+      protein: this.formBuilder.control<number | null>(null, [Validators.required]),
+      fat: this.formBuilder.control<number | null>(null, [Validators.required]),
+      calories: this.formBuilder.control<number | null>(null, [Validators.required]),
+      sugar: this.formBuilder.control<number | null>(null, [Validators.required]),
+    })
   })
+
+  aggiungiNuovoFrutto() {
+    this.fruitsStore.aggiungiFrutto(this.aggiungiFruttoForm.getRawValue())
+  }
 }

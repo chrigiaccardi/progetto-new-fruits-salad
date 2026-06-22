@@ -5,10 +5,10 @@ export interface Frutto {
     genus: string;
     order: string;
     nutritions: {
-        carbohydrates: number;
-        protein: number;
-        fat: number;
-        calories: number;
-        sugar: number;
+        carbohydrates: number | null;
+        protein: number | null;
+        fat: number | null;
+        calories: number | null;
+        sugar: number | null;
     }
 }

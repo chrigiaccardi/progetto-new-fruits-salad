@@ -1,7 +1,7 @@
-import { httpResource } from '@angular/common/http';
-import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
+import { HttpClient, httpResource } from '@angular/common/http';
+import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
 import { Frutto } from '../models/frutto';
-import { computed, Signal, signal } from '@angular/core';
+import { computed, inject, Signal, signal } from '@angular/core';
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
 const apiFrutta:string = '/api/fruit'
@@ -12,6 +12,7 @@ export type FruitsState = {
     famigliaSelezionata: string;
     genereSelezionato: string;
     ordineSelezionato: string;
+    erroreAggiuntaFrutto: string;
 }
 
 export const FruitsStore = signalStore(
@@ -23,9 +24,11 @@ export const FruitsStore = signalStore(
         famigliaSelezionata: '',
         genereSelezionato: '',
         ordineSelezionato: '',
+        erroreAggiuntaFrutto: '',
     } as FruitsState),
 
-    withMethods((store) => {
+    withMethods((store, http = inject(HttpClient)) => {
+
         const rispostaFrutta = httpResource<Frutto[]>(() => ({
             url: `${apiFrutta}/all`,
             method: 'GET'
@@ -39,6 +42,18 @@ export const FruitsStore = signalStore(
             ricaricareListaFrutti: () => {
                 rispostaFrutta.reload()
             },
+
+            // Creiamo il metodo per poter aggiungere u nuovo frutto al backend
+            aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
+                http.put<Frutto>(apiFrutta, nuovoFrutto).subscribe({
+                    next: (fruttoCreato) => {
+                        rispostaFrutta.reload()
+                    },
+                    error: (err) => {
+                        patchState(store, {erroreAggiuntaFrutto: `Errore nell'aggiunta del nuovo Frutto: ${err.statusText}`})
+                    }
+                })
+            }),
 
             // Creiamo tre metodo per gestire la Macedonia, aggiungi, rimuovi e svuota.
             aggiungiAMacedonia: (frutto: Frutto) => {

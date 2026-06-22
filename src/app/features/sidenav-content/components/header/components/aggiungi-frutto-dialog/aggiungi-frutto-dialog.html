@@ -11,59 +11,58 @@
         <form class="">
             <div class="flex flex-rows gap-3">
                 <div class="flex flex-col p-2 bg-blue-100 rounded-lg">
-                    <mat-form-field class="w-full" appearance="outline">
-                        <mat-label>Nome Frutto</mat-label>
-                        <input matInput type="text" formControlName="name" placeholder="Nome Frutto">
-                    </mat-form-field>
-
-                    <mat-form-field appearance="outline">
-                        <mat-label>Famiglia</mat-label>
-                        <mat-select formControlName="family">
+                    <div class="">
+                        <label>Nome Frutto</label>
+                        <input type="text" formControlName="name" placeholder="Nome Frutto">
+                    </div>
+                    <div class="">
+                        <label>Famiglia</label>
+                           <select formControlName="family">
                             @for (fam of famiglieDisponibili(); track fam) {
-                            <mat-option [value]="fam">{{fam}}</mat-option>
+                            <option [value]="fam">{{fam}}</option>
                             }
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Genere</mat-label>
-                        <mat-select formControlName="genus">
+                        </select>
+                    </div>
+                    <div class="">
+                        <label>Genere</label>
+                        <select formControlName="genus">
                             @for (gen of generiDisponibili(); track gen) {
-                            <mat-option [value]="gen">{{gen}}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                        <mat-label>Ordine</mat-label>
-                        <mat-select formControlName="order">
+                            <option [value]="gen">{{gen}}</option>   }
+                        </select>
+                    </div>
+                    <div class="">
+                        <label>Ordine</label>
+                        <select formControlName="order">
                             @for (ord of ordiniDisponibili(); track ord) {
-                            <mat-option [value]="ord">{{ord}}</mat-option>
-                            }
-                        </mat-select>
-                    </mat-form-field>
+                            <option [value]="ord">{{ord}}</option>   }
+                        </select>
+                    </div>
                 </div>
 
                 <div class="p-2 bg-green-100 rounded-lg">
                     <p class="flex justify-center mb-2">Valori Nutrizionali per 100g:</p>
                     <div class="grid grid-cols-2 gap-2 !items-center justify-center">
-                        <mat-form-field appearance="outline">
-                            <input matInput type="text" formControlName="name">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Proteine</mat-label>
-                            <input matInput type="text" formControlName="name">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Grasso</mat-label>
-                            <input matInput type="text" formControlName="name">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Calorie</mat-label>
-                            <input matInput type="text" formControlName="name">
-                        </mat-form-field>
-                        <mat-form-field appearance="outline">
-                            <mat-label>Zucchero</mat-label>
-                            <input matInput type="text" formControlName="name">
-                        </mat-form-field>
+                        <div class="">
+                            <label>Carboidrati</label>
+                            <input type="text" formControlName="carbohydrates">
+                        </div>
+                        <div class="">
+                            <label>Proteine</label>
+                            <input type="text" formControlName="protein">
+                        </div>
+                        <div class="">
+                            <label>Grasso</label>
+                            <input type="text" formControlName="fat">
+                        </div>
+                        <div class="">
+                            <label>Calorie</label>
+                            <input type="text" formControlName="calories">
+                        </div>
+                        <div class="">
+                            <label>Zuccheri</label>
+                            <input type="text" formControlName="sugar">
+                        </div>
+                     
                     </div>
                 </div>
             </div>
