@@ -1,15 +1,16 @@
 import { Component, inject } from '@angular/core';
-import { MatDialogTitle, MatDialogClose, MatDialogContent } from "@angular/material/dialog";
+import { MatDialogTitle, MatDialogClose, MatDialogContent, MatDialogActions } from "@angular/material/dialog";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { FruitsStore } from '../../../../../../core/store/fruitsStore';
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from '@angular/material/select'
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-aggiungi-frutto-dialog',
-  imports: [MatDialogTitle, MatButtonModule, MatDialogClose, MatSelectModule, MatIcon, MatDialogContent, MatInputModule],
+  imports: [MatDialogTitle, MatButtonModule, MatDialogClose, MatSelectModule, MatIcon, MatDialogContent, MatInputModule, ReactiveFormsModule],
   templateUrl: './aggiungi-frutto-dialog.html',
   styleUrl: './aggiungi-frutto-dialog.css',
 })

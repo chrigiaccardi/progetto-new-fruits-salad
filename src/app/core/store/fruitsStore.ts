@@ -104,11 +104,13 @@ export const FruitsStore = signalStore(
         totaliNutrienti: computed(() => {
             return store.macedonia().reduce(
                 (acc, frutto) => ({
-                    calorie: acc.calorie + frutto.nutritions.calories,
-                    carboidrati: acc.carboidrati + frutto.nutritions.carbohydrates,
-                    proteine: acc.proteine + frutto.nutritions.protein,
-                    grassi: acc.grassi + frutto.nutritions.fat,
-                    zuccheri: acc.zuccheri + frutto.nutritions.sugar,
+                    // Utilizziamo ?? 0 perchè reduce vuole sempre un number, quindi visto che il valore potrebbe essere null,
+                    // impostiamo che se è null venga inserito 0
+                    calorie: acc.calorie + (frutto.nutritions.calories ?? 0),
+                    carboidrati: acc.carboidrati + (frutto.nutritions.carbohydrates ?? 0),
+                    proteine: acc.proteine + (frutto.nutritions.protein ?? 0),
+                    grassi: acc.grassi + (frutto.nutritions.fat  ?? 0),
+                    zuccheri: acc.zuccheri + (frutto.nutritions.sugar ?? 0)
                 }),
                 {calorie: 0, carboidrati: 0, proteine: 0, grassi: 0, zuccheri: 0,}
             )

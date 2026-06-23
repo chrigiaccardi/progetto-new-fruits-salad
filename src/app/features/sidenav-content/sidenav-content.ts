@@ -2,24 +2,13 @@ import { Component, inject } from '@angular/core';
 import { MacedoniaCard } from "./components/macedonia-card/macedonia-card";
 import { Header } from "./components/header/header";
 import { MatDivider } from "@angular/material/divider";
-import { FruitsStore } from '../../core/store/fruitsStore';
-import { FruttaCard } from "./components/frutta-card/frutta-card";
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ListaFrutti } from "./components/lista-frutti/lista-frutti";
 
 
 @Component({
   selector: 'app-sidenav-content',
-  imports: [MacedoniaCard, Header, MatDivider, FruttaCard, MatProgressSpinnerModule],
+  imports: [MacedoniaCard, Header, MatDivider, ListaFrutti],
   templateUrl: './sidenav-content.html',
   styleUrl: './sidenav-content.css',
 })
-export class SidenavContent {
-    // Iniettiamo lo store per poterlo utilizzare
-  fruitsStore = inject(FruitsStore)
-
-  // Importiamo dallo store i seguenti valori
-  readonly caricamentoListaFrutta = this.fruitsStore.caricamentoListaFrutta;
-  readonly erroreListaFrutta = this.fruitsStore.erroreListaFrutta;
-  readonly listaFruttiFiltrata = this.fruitsStore.listaFruttiFiltrata
-  readonly listaFrutta = this.fruitsStore.listaFrutta
-}
+export class SidenavContent {}
