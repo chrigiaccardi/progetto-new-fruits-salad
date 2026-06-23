@@ -1,7 +1,9 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
-import { Frutto } from '../models/frutto';
-import { computed, inject, Signal, signal } from '@angular/core';
+import { Frutto, rispostaAggiungiFrutto } from '../models/frutto';
+import { computed, inject } from '@angular/core';
+import { HotToastService } from '@ngxpert/hot-toast';
+
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
 const apiFrutta:string = '/api/fruit'
@@ -27,7 +29,7 @@ export const FruitsStore = signalStore(
         erroreAggiuntaFrutto: '',
     } as FruitsState),
 
-    withMethods((store, http = inject(HttpClient)) => {
+    withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService)) => {
 
         const rispostaFrutta = httpResource<Frutto[]>(() => ({
             url: `${apiFrutta}/all`,
@@ -45,12 +47,15 @@ export const FruitsStore = signalStore(
 
             // Creiamo il metodo per poter aggiungere u nuovo frutto al backend
             aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
-                http.put<Frutto>(apiFrutta, nuovoFrutto).subscribe({
-                    next: (fruttoCreato) => {
-                        rispostaFrutta.reload()
+                http.put<rispostaAggiungiFrutto>(apiFrutta, nuovoFrutto).subscribe({
+                    next: (risposta) => {
+                        rispostaFrutta.reload();
+                        toaster.success(risposta.message)
+
                     },
                     error: (err) => {
-                        patchState(store, {erroreAggiuntaFrutto: `Errore nell'aggiunta del nuovo Frutto: ${err.statusText}`})
+                        patchState(store, { erroreAggiuntaFrutto: `Errore nell'aggiunta del nuovo Frutto: ${err.statusText}` })
+                        toaster.error(`Errore nell'aggiunta del frutto: ${err.statusText}`)
                     }
                 })
             }),

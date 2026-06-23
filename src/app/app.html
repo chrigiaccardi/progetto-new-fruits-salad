@@ -1,5 +1,5 @@
 <mat-sidenav-container class="flex h-full">
-  <mat-sidenav opened mode="side">
+  <mat-sidenav [mode]="breakpoints.sidenavMode()" [opened]="breakpoints.sidenavOpened()">
     <app-sidenav-lat />
   </mat-sidenav>
 
