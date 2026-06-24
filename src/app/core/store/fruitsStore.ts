@@ -30,7 +30,8 @@ export const FruitsStore = signalStore(
     } as FruitsState),
 
     withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService)) => {
-
+        // Risposta dal backend per l lista frutti completa
+        // Utilizziamo HttpResource per avere in risposta anche caricamento ed errori
         const rispostaFrutta = httpResource<Frutto[]>(() => ({
             url: `${apiFrutta}/all`,
             method: 'GET'
@@ -45,7 +46,7 @@ export const FruitsStore = signalStore(
                 rispostaFrutta.reload()
             },
 
-            // Creiamo il metodo per poter aggiungere u nuovo frutto al backend
+            // Creiamo il metodo per poter aggiungere un nuovo frutto al backend
             aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
                 http.put<rispostaAggiungiFrutto>(apiFrutta, nuovoFrutto).subscribe({
                     next: (risposta) => {
@@ -60,7 +61,7 @@ export const FruitsStore = signalStore(
                 })
             }),
 
-            // Creiamo tre metodo per gestire la Macedonia, aggiungi, rimuovi e svuota.
+            // Creiamo tre metodi per gestire la Macedonia, aggiungi, rimuovi e svuota.
             aggiungiAMacedonia: (frutto: Frutto) => {
                 // verifichiamo con some se il frutto è già presente o no
                 const presenzaFrutto = store.macedonia().some(i => i.id === frutto.id)

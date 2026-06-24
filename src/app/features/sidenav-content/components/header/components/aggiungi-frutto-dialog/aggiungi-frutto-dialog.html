@@ -8,17 +8,18 @@
     </div>
 
     <mat-dialog-content>
+        <!-- Creiamo il form e il bottone per l'invio dei dati al backend -->
         <form (ngSubmit)="aggiungiNuovoFrutto()" [formGroup]="aggiungiFruttoForm">
             <div class="flex flex-col md:flex-row gap-3">
                 <div class="flex flex-col p-4 rounded-lg gap-2">
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Nome Frutto</label>
                         <input type="text" formControlName="name" placeholder="Nome Frutto"
-                            class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
+                            class="input-select-dialog">
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Famiglia</label>
-                        <select formControlName="family" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
+                        <select formControlName="family" class="input-select-dialog">
                             @for (fam of famiglieDisponibili(); track fam) {
                             <option [value]="fam">{{fam}}</option>
                             }
@@ -26,14 +27,14 @@
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Genere</label>
-                        <select formControlName="genus" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
+                        <select formControlName="genus" class="input-select-dialog">
                             @for (gen of generiDisponibili(); track gen) {
                             <option [value]="gen">{{gen}}</option> }
                         </select>
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Ordine</label>
-                        <select formControlName="order" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
+                        <select formControlName="order" class="input-select-dialog">
                             @for (ord of ordiniDisponibili(); track ord) {
                             <option [value]="ord">{{ord}}</option> }
                         </select>
@@ -47,27 +48,27 @@
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Carboidrati</label>
                             <input type="number" formControlName="carbohydrates"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
+                                class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Proteine</label>
                             <input type="number" formControlName="protein"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
+                                class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Grasso</label>
                             <input type="number" formControlName="fat"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
+                                class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Calorie</label>
                             <input type="number" formControlName="calories"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
+                                class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Zuccheri</label>
                             <input type="number" formControlName="sugar"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
+                                class="input-select-dialog w-20">
                         </div>
 
                     </div>

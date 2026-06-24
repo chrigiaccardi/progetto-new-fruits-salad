@@ -14,5 +14,10 @@
 }
 
 .input-select-dialog {
-    
+    padding: 0.5rem;
+    margin-top: 0.5rem;
+    border: 1px solid #d1d5db;
+    background-color: white;
+    border-radius: 0.5rem;
 }
+
