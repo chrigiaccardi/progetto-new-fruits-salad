@@ -1,14 +1,20 @@
 <header class="flex flex-col md:flex-row items-center justify-around p-3 gap-3">
+    <!-- Utilizziamo l'if per visualizzare questo blocco codice solamente in modalità mobile -->
     @if(breakpoints.isMobileDevice()) {
+    <div class="flex items-center gap-5">
         <button mat-icon-button (click)="breakpoints.toggleSidenav()">
             <mat-icon>menu</mat-icon>
         </button>
+        <img src="/gruppo-di-frutta.png" alt="Logo Fruits Salad Mix">
+        <h1 class="font-bold text-green-700 text-xl">Fruits Salad Mix</h1>
+    </div>
+
     }
     <input type="text" matInput placeholder="Cerca il tuo frutto preferito"
         (input)="fruitsStore.setFiltroRicerca(($event.target).value)"
-        class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 max-w-[600px] w-full shadow-xl">
+        class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 max-w-[600px] w-full shadow-xl bg-white">
 
-    <button matButton class="!text-green-700 !bg-green-100 !shadow-lg" (click)="apriDialogAggiungiFrutto()">
+    <button matButton class="!text-green-700 !bg-yellow-100 !shadow-lg" (click)="apriDialogAggiungiFrutto()">
         <mat-icon>add</mat-icon>
         Nuovo Frutto
     </button>

@@ -1,4 +1,4 @@
-<div class="p-8 flex flex-col ">
+<div class="p-8 flex flex-col bg-gradient-to-r from-green-100 via-white to-green-100">
     <!-- Creiamo due sezioni separate, la parte del titolo e la parte del form -->
     <div class="flex justify-between border-b-2 border-gray-400 pb-2">
         <h2 class="!text-green-700" mat-dialog-title>Aggiungi Nuovo Frutto</h2>
@@ -9,16 +9,16 @@
 
     <mat-dialog-content>
         <form (ngSubmit)="aggiungiNuovoFrutto()" [formGroup]="aggiungiFruttoForm">
-            <div class="flex flex-rows gap-3">
+            <div class="flex flex-col md:flex-row gap-3">
                 <div class="flex flex-col p-4 rounded-lg gap-2">
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Nome Frutto</label>
                         <input type="text" formControlName="name" placeholder="Nome Frutto"
-                            class="p-2 mt-2 border border-gray-300 rounded-lg">
+                            class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Famiglia</label>
-                        <select formControlName="family" class="mt-2">
+                        <select formControlName="family" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
                             @for (fam of famiglieDisponibili(); track fam) {
                             <option [value]="fam">{{fam}}</option>
                             }
@@ -26,14 +26,14 @@
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Genere</label>
-                        <select formControlName="genus" class="mt-2">
+                        <select formControlName="genus" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
                             @for (gen of generiDisponibili(); track gen) {
                             <option [value]="gen">{{gen}}</option> }
                         </select>
                     </div>
                     <div class="wrapper-input-dialog">
                         <label class="titolo-label-dialog">Ordine</label>
-                        <select formControlName="order" class="mt-2">
+                        <select formControlName="order" class="p-2 mt-2 border border-gray-300 rounded-lg bg-white">
                             @for (ord of ordiniDisponibili(); track ord) {
                             <option [value]="ord">{{ord}}</option> }
                         </select>
@@ -47,38 +47,38 @@
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Carboidrati</label>
                             <input type="number" formControlName="carbohydrates"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2">
+                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Proteine</label>
                             <input type="number" formControlName="protein"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2">
+                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Grasso</label>
                             <input type="number" formControlName="fat"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2">
+                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Calorie</label>
                             <input type="number" formControlName="calories"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2">
+                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
                         </div>
                         <div class="wrapper-input-dialog">
                             <label class="titolo-label-dialog">Zuccheri</label>
                             <input type="number" formControlName="sugar"
-                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2">
+                                class="mt-2 border border-gray-300 rounded-lg w-20 p-2 bg-white">
                         </div>
 
                     </div>
                 </div>
             </div>
-            <button matButton type="submit" [disabled]=""
-                class="!text-green-700 !bg-green-100 !shadow-md" mat-dialog-close>
-                <mat-icon>add</mat-icon> Nuovo Frutto
-            </button>
+            <div class="flex items-center justify-center">
+                <button matButton type="submit" [disabled]="aggiungiFruttoForm.invalid"
+                    class=" !shadow-md mt-3 {{aggiungiFruttoForm.valid ? '!bg-green-100 !text-green-700':'!bg-gray-100 !text-gray-700'}}" mat-dialog-close>
+                    <mat-icon>add</mat-icon> Nuovo Frutto
+                </button>
+            </div>
         </form>
-
     </mat-dialog-content>
-
 </div>

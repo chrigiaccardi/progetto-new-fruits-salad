@@ -1,17 +1,21 @@
 import { Component, inject } from '@angular/core';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { FruitsStore } from '../../core/store/fruitsStore';
 import { MatAnchor } from "@angular/material/button";
+import { BreakpointScreen } from '../../core/services/breakpoint-screen';
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-sidenav-lat',
-  imports: [MatDividerModule, MatAnchor],
+  imports: [MatDividerModule, MatAnchor, MatIconModule, MatButtonModule],
   templateUrl: './sidenav-lat.html',
   styleUrl: './sidenav-lat.css',
 })
 export class SidenavLat {
   // Iniettiamo lo store per poterlo utilizzare
   fruitsStore = inject(FruitsStore)
+  breakpoints = inject(BreakpointScreen)
   // Istanziamo i vari valori dello store
   readonly famiglieDisponibili = this.fruitsStore.famiglieDisponibili
   readonly ordiniDisponibili = this.fruitsStore.ordiniDisponibili
