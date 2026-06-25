@@ -12,9 +12,3 @@ export interface Frutto {
         sugar: number | null;
     }
 }
-
-// Creiamo un type custom per poter ricevere il messaggio di risposta e l'oggetto frutto
-export type rispostaAggiungiFrutto = {
-    message: string;
-    frutto: Frutto;
-}

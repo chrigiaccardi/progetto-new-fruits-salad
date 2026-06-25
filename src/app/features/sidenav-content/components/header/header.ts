@@ -23,6 +23,7 @@ export class Header {
   // Istanziaamo filtro ricerca per poterlo utilizzare
   readonly filtroRicerca = this.fruitsStore.filtroRicerca
 
+  // Istanziamo erroreRicerca per poterlo utilizzare 
   readonly erroreRicerca = signal(false)
 
   // Metodo per aprire il dialog
@@ -30,7 +31,7 @@ export class Header {
     this.matDialog.open(AggiungiFruttoDialog)
   }
 
-  // Metodo per cambiare il toggle per la sidenav
+  // Metodo per cambiare il toggle per la sidenav preso dal service Breakpoints
   sidenanToggle() {
     this.breakpoints.sidenavOpened()
   }

@@ -12,6 +12,7 @@ import { BreakpointScreen } from './core/services/breakpoint-screen';
   styleUrl: './app.css'
 })
 export class App {
+  // Titolo del progetto visualizzato sulla tab del browser
   protected readonly title = signal('2o-progetto-angular-s2i');
 
   //importiamo il service dei breakpoints

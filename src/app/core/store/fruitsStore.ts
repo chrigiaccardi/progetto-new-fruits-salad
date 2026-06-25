@@ -1,6 +1,6 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
-import { Frutto, rispostaAggiungiFrutto } from '../models/frutto';
+import { Frutto} from '../models/frutto';
 import { computed, inject } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
 
@@ -47,11 +47,13 @@ export const FruitsStore = signalStore(
             },
 
             // Creiamo il metodo per poter aggiungere un nuovo frutto al backend
+            // Dietro signalMethod abbiamo il tipo di dati che inviamo invece dietro PUT il tipo di dati che riceviamo
+            // In questo caso string perchè riceviamo un messaggio dal backend di successo
             aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
-                http.put<rispostaAggiungiFrutto>(apiFrutta, nuovoFrutto).subscribe({
+                http.put<{success: string}> (apiFrutta, nuovoFrutto).subscribe({
                     next: (risposta) => {
                         rispostaFrutta.reload();
-                        toaster.success(risposta.message)
+                        toaster.success(risposta.success)
 
                     },
                     error: (err) => {
@@ -92,6 +94,8 @@ export const FruitsStore = signalStore(
             setGenereSelezionato: (testo: string) => {
                 patchState(store, {genereSelezionato: testo})
             },
+
+            // Creiamo un metodo per resettare i filtri
             resetFiltri: () => {
                 patchState(store, {
                     filtroRicerca: '',
@@ -133,7 +137,7 @@ export const FruitsStore = signalStore(
             // Se tutti i filtri sono azzerati allora restituisci la listaFrutta completa come da lettura backend
             if (!testoRicerca && !famigliaSelect && !ordineSelect && !genereSelect) return store.listaFrutta();
 
-            // Eseguiamo un filtrattio della listaFrutta, la calback frutto restituisce, per ogni frutto, true se deve essere tenuto e false se scartato
+            // Eseguiamo un filtraggio della listaFrutta, la callback frutto restituisce, per ogni frutto, true se deve essere tenuto e false se scartato
             return store.listaFrutta()?.filter(frutto => {
                 // In questo caso utilizziamo OR || per dire: se la prima condizione è vera restituisci quella altrimenti l'altra.
                 // Di conseguenza se testoRicerca è vuoto, quindi vero si ferma li, se il testo è riempito, non vuoto, quindi falso e restituisce il filtro

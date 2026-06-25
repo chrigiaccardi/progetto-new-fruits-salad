@@ -1,9 +1,12 @@
+<!-- Dividiamo semanticamente una sidenav laterale e la parte principale di contenuto -->
 <mat-sidenav-container class="flex h-full">
+  <!-- Apertura e tipologia sidenav gestita dinamicamente nel service Breakpoints -->
   <mat-sidenav [mode]="breakpoints.sidenavMode()" [opened]="breakpoints.sidenavOpened()" [disableClose]="true">
     <app-sidenav-lat />
   </mat-sidenav>
-
+  <!-- Content principalegestito nel conpoment apposito -->
   <mat-sidenav-content>
     <app-sidenav-content />
   </mat-sidenav-content>
+
 </mat-sidenav-container>

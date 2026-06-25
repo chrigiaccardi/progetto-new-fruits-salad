@@ -19,9 +19,10 @@ export class FruttaCard {
   fruitsStore = inject(FruitsStore)
 
   // Bottone Apri elenco valori nutrizionali
-  valNut = signal(false);
+  btnValNut = signal(false);
+
   // Metodo toggle per aprire l'elenco dei valori nutrizionali
   toggleValNut() {
-  this.valNut.update(v => !v);
+  this.btnValNut.update(v => !v);
 }
 }

@@ -33,7 +33,7 @@ export class AggiungiFruttoDialog {
     family: this.formBuilder.control<string>('', [Validators.required]),
     genus: this.formBuilder.control<string>('', [Validators.required]),
     order: this.formBuilder.control<string>('', [Validators.required]),
-  
+    // Essendo che nutritions è un sottogruppo dobbiamo impostare un nuovo formGroup con i relativi valori nutrizionali
     nutritions: this.formBuilder.group({
       carbohydrates: this.formBuilder.control<number | null>(null, [Validators.required]),
       protein: this.formBuilder.control<number | null>(null, [Validators.required]),
@@ -42,7 +42,7 @@ export class AggiungiFruttoDialog {
       sugar: this.formBuilder.control<number | null>(null, [Validators.required]),
     })
   })
-
+  // Creiamo il metodo per poter aggiungere il nuovo frutto richiamando quello dello store
   aggiungiNuovoFrutto() {
     this.fruitsStore.aggiungiFrutto(this.aggiungiFruttoForm.getRawValue())
   }

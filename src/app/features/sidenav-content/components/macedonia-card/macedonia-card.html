@@ -1,5 +1,7 @@
+<!-- Utilizziamo section per accessibilità -->
 <section class="m-5 rounded-xl shadow-xl p-5 bg-gradient-to-r from-orange-100 to-yellow-100 text-lg"
     animate.enter="apri-card">
+    <!-- In base a se la macedonia è vuota o no visualizziamo determinati elementi -->
     @if(fruitsStore.macedonia().length === 0){
     <div class="flex items-center">
         <p>Aggiungi frutta alla tua Macedonia e scopri l'insieme dei valori nutrizionali!</p>
@@ -8,6 +10,7 @@
     <div class="flex flex-col items-center gap-3" animate.enter="apri-card">
         <p class="">La tua <strong>Macedonia</strong> contiene:</p>
         <mat-chip-set>
+            <!-- Viene creata una lista in base a cosa viene inserito all'interno della macedonia con un bottone per rimuovere -->
             @for (frutto of fruitsStore.macedonia(); track frutto.id) {
             <mat-chip (removed)="fruitsStore.rimuoviDaMacedonia(frutto)">
                 {{frutto.name}}
@@ -17,6 +20,7 @@
             </mat-chip>
             }
         </mat-chip-set>
+        <!-- Seione dove vengono visualizzati i valori nutrizionali totali -->
         <p>e in totale i valori nutrizionali sono:</p>
         <div class="flex flex-col w-full">
             <ul>

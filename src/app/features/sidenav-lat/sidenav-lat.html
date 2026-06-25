@@ -1,3 +1,4 @@
+<!-- Sidenav divisa in due: titolo e piccola spiegazione e filtri ricerca famiglia,genere,ordine con un bottone di reset -->
 <div class="bg-green-50 h-full flex flex-col items-center">
     <!-- Qua utilizziamo dei condizionali con i breakpoints per visualizzare o meno elementi se siamo su mobile o su desktop -->
     @if (breakpoints.isMobileDevice()) {
@@ -17,7 +18,7 @@
     </div>
     <mat-divider class="w-full" />
     }
-
+    <!-- Seione filtri con bottone reset -->
     <div class="flex flex-col items-center justify-center m-5 gap-3">
         <p class="text-green-700 font-bold text-xl">Filtri:</p>
         <label class="block mt-4 text-sm font-medium">Famiglia</label>
@@ -45,6 +46,7 @@
         </select>
 
     </div>
+    <!-- Bottone Reset filtri -->
     <button matButton class="!text-green-700 shadow-md !bg-yellow-100 mt-4" (click)="fruitsStore.resetFiltri()">Reset
         Totale Filtri</button>
 </div>
