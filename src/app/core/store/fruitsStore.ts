@@ -6,7 +6,7 @@ import { HotToastService } from '@ngxpert/hot-toast';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
-const apiFrutta:string = '/api/fruit'
+ const apiFrutta:string = '/api/fruit'
 
 export type FruitsState = {
     filtroRicerca: string;
@@ -147,6 +147,7 @@ export const FruitsStore = signalStore(
                 const matchGenere = !genereSelect || frutto.genus.toLowerCase() === genereSelect;
 
                 // Da queste condizioni ritorniamo i frutti che matchano le varie condizioni
+                // Un frutto ritorna solamente se rispetta tutti i match contemporaneamente
                 return matchNome && matchFamiglia && matchOrdine && matchGenere
             })
         }),
