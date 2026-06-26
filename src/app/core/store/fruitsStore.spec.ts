@@ -3,6 +3,8 @@ import { FruitsStore } from "./fruitsStore";
 import { Frutto } from "../models/frutto";
 import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing"
 import { ApplicationRef } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { of } from "rxjs";
 
 // Describe raggruppa i test che appartengono allo stesso argomento (FruitsStore)
 describe('FruitsStore', () => {
@@ -89,7 +91,7 @@ describe('FruitsStore', () => {
         TestBed.configureTestingModule({
             providers: [
                 FruitsStore,
-                provideHttpClientTesting()
+                provideHttpClientTesting(),
             ]
         });
         // Recuperiamo  i providers e li assegnamo
@@ -126,18 +128,19 @@ describe('FruitsStore', () => {
         expect(store.ordineSelezionato()).toBe('')
     })
 
-    it('Dovrebbe ritornare la listaFrutti() completa', async () => {
-      
-        store.setFamigliaSelezionata('')
-        store.setGenereSelezionato('')
-        store.setOrdineSelezionato('')
-        store.setFiltroRicerca('')
+    it('Dovrebbe ritornare la listaFrutti() completa', () => {
+
+        const richiestaGET = httpTesting.expectOne((richiesta) => 
+            richiesta.method === 'GET' &&
+            richiesta.url === '/api/fruit/all'
+        )
+        richiestaGET.flush(FRUTTI_MOCK)
+
+        // faccio partire il metodo reset che imposta tutti i valori a ''
+        store.resetFiltri()
 
         // toEqual confronta gli oggetti/array in profondità
         expect(store.listaFruttiFiltrata()).toEqual(FRUTTI_MOCK)
      })
-
-
-
 
 })
