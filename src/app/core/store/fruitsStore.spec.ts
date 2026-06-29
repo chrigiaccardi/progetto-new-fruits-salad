@@ -3,8 +3,7 @@ import { FruitsStore } from "./fruitsStore";
 import { Frutto } from "../models/frutto";
 import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing"
 import { ApplicationRef } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { of } from "rxjs";
+import { provideHttpClient } from "@angular/common/http";
 
 // Describe raggruppa i test che appartengono allo stesso argomento (FruitsStore)
 describe('FruitsStore', () => {
@@ -90,13 +89,13 @@ describe('FruitsStore', () => {
         // Si configura l'ambiente con i providers così angular sa dove recuperarli
         TestBed.configureTestingModule({
             providers: [
+                provideHttpClient(),
                 FruitsStore,
                 provideHttpClientTesting(),
             ]
         });
         // Recuperiamo  i providers e li assegnamo
         httpTesting = TestBed.inject(HttpTestingController)
-        store = TestBed.inject(FruitsStore)
     });
 
     // Con AfterEach controlliamo che dopo ogni test non rimangono chiamate http pendenti
@@ -106,6 +105,7 @@ describe('FruitsStore', () => {
 
     // Inizio Test
     it('Lo store dovrebbe essere creato', () => {
+        store = TestBed.inject(FruitsStore)
         expect(store).toBeTruthy()
     })
 
@@ -128,19 +128,27 @@ describe('FruitsStore', () => {
         expect(store.ordineSelezionato()).toBe('')
     })
 
-    it('Dovrebbe ritornare la listaFrutti() completa', () => {
+  it('httpResource Dovrebbe ritornare la listaFrutta() completa', async () => {
 
-        const richiestaGET = httpTesting.expectOne((richiesta) => 
-            richiesta.method === 'GET' &&
-            richiesta.url === '/api/fruit/all'
-        )
-        richiestaGET.flush(FRUTTI_MOCK)
+    store = TestBed.inject(FruitsStore)
 
-        // faccio partire il metodo reset che imposta tutti i valori a ''
-        store.resetFiltri()
+    const appRef = TestBed.inject(ApplicationRef)
 
-        // toEqual confronta gli oggetti/array in profondità
-        expect(store.listaFruttiFiltrata()).toEqual(FRUTTI_MOCK)
-     })
+    // lascio ad Angular il tempo di inizializzare la Resource
+    await appRef.whenStable()
+
+    const richiestaGET = httpTesting.expectOne((richiesta) =>
+        richiesta.method === 'GET' &&
+        richiesta.url === '/api/fruit/all'
+    )
+
+    richiestaGET.flush(FRUTTI_MOCK)
+
+    // aspetto aggiornamento del signal
+    await appRef.whenStable()
+
+    expect(store.listaFrutta()).toEqual(FRUTTI_MOCK)
+})
 
 })
+
