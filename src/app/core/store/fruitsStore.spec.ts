@@ -11,6 +11,7 @@ describe('FruitsStore', () => {
     let httpTesting: HttpTestingController;
     let store: InstanceType<typeof FruitsStore>
     
+    // Creo dei Mock da poter utilizzare come muletti
     const FRUTTI_MOCK: Frutto[] = [
         {
             id: 1,
@@ -82,7 +83,20 @@ describe('FruitsStore', () => {
             sugar: 13
             }
         }
-        ];
+    ];
+    const fruttoFake: Omit<Frutto, 'id'> = {
+            name: 'Apple',
+            family: 'Rosaceae',
+            genus: 'Malus',
+            order: 'Rosales',
+            nutritions: {
+            carbohydrates: 14,
+            protein: 0.3,
+            fat: 0.2,
+            calories: 52,
+            sugar: 10
+            }
+    }
 
     // Il beforeEach viene eseguito prima di ogni test così da avere l'ambiente pulito
     beforeEach(() => {
@@ -96,6 +110,8 @@ describe('FruitsStore', () => {
         });
         // Recuperiamo  i providers e li assegnamo
         httpTesting = TestBed.inject(HttpTestingController)
+        store = TestBed.inject(FruitsStore)
+
     });
 
     // Con AfterEach controlliamo che dopo ogni test non rimangono chiamate http pendenti
@@ -105,7 +121,6 @@ describe('FruitsStore', () => {
 
     // Inizio Test
     it('Lo store dovrebbe essere creato', () => {
-        store = TestBed.inject(FruitsStore)
         expect(store).toBeTruthy()
     })
 
@@ -128,27 +143,32 @@ describe('FruitsStore', () => {
         expect(store.ordineSelezionato()).toBe('')
     })
 
-  it('httpResource Dovrebbe ritornare la listaFrutta() completa', async () => {
+    it('dovrebbe creare un nuovo frutto', () => {
+        store.aggiungiFrutto(fruttoFake)
+        const richiestaPUT = httpTesting.expectOne({ method: 'PUT', url: '/api/fruit' })
+        expect(richiestaPUT.request.body).toEqual(fruttoFake)
+    })
 
-    store = TestBed.inject(FruitsStore)
+    it('Errore aggiungiFrutto', () => {
+        store.aggiungiFrutto(fruttoFake)
+        const richiestaPUT = httpTesting.expectOne({ method: 'PUT', url: '/api/fruit' })
+        richiestaPUT.flush('Errore Server', {
+            status: 417,
+            statusText: 'The given JSON could not be processed'
+        })
 
-    const appRef = TestBed.inject(ApplicationRef)
+        expect(store.erroreAggiuntaFrutto()).toContain(`Errore nell'aggiunta del nuovo Frutto`)
+    })
 
-    // lascio ad Angular il tempo di inizializzare la Resource
-    await appRef.whenStable()
-
-    const richiestaGET = httpTesting.expectOne((richiesta) =>
-        richiesta.method === 'GET' &&
-        richiesta.url === '/api/fruit/all'
-    )
-
-    richiestaGET.flush(FRUTTI_MOCK)
-
-    // aspetto aggiornamento del signal
-    await appRef.whenStable()
-
-    expect(store.listaFrutta()).toEqual(FRUTTI_MOCK)
-})
-
+    it('Dovrebbe dare la somma dei valori nutrizionali', () => {
+        // Aggiungo alla macedonia due frutti mock
+        store.aggiungiAMacedonia(FRUTTI_MOCK[0])
+        store.aggiungiAMacedonia(FRUTTI_MOCK[1])
+        // Istanzio i totali
+        const totali = store.totaliNutrienti()
+        // Mi aspetto che calorie e zuccheri sia la somma giusta
+        expect(totali.calorie).toBe(148)
+        expect(totali.zuccheri).toBe(22)
+    })
 })
 

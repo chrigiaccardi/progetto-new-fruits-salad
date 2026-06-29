@@ -1,7 +1,7 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
 import { Frutto} from '../models/frutto';
-import { computed, inject } from '@angular/core';
+import { computed, effect, inject } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
 
 
@@ -11,6 +11,7 @@ import { HotToastService } from '@ngxpert/hot-toast';
 export type FruitsState = {
     filtroRicerca: string;
     macedonia: Frutto[];
+    listaFrutta: Frutto[];
     famigliaSelezionata: string;
     genereSelezionato: string;
     ordineSelezionato: string;
@@ -23,6 +24,7 @@ export const FruitsStore = signalStore(
     withState({
         filtroRicerca: '',
         macedonia: [],
+        listaFrutta: [],
         famigliaSelezionata: '',
         genereSelezionato: '',
         ordineSelezionato: '',
@@ -36,9 +38,24 @@ export const FruitsStore = signalStore(
             url: `${apiFrutta}/all`,
             method: 'GET'
         }))
-        
+        // Abbiamo cambiato approccio in questo caso. Al posto di prendere listaFrutta direttamente dalla rispostaFrutta.value
+        // Andiamo a sincronizzare listaFrutta, instanziata nello state, con un metodo ed effect:
+        // Il metodo sincronizza semplicemente setta i dati in ingresso in listaFrutta
+        // Il meccanismo effect legge ogni cambiamento di rispostaFrutta.value e lo va ad inserire in ingresso nel metodo sincronizza
+        // con un condizionale che, nel caso rispostaFrutta.value non esistesse, esce
+        const sincronizzaListaFrutta = (frutti: Frutto[]) => {
+                patchState(store, {listaFrutta: frutti})
+        }
+            
+        effect(() => {
+            const frutti = rispostaFrutta.value()
+            if (!frutti) return
+            
+            sincronizzaListaFrutta(frutti)            
+        })
+
         return {
-            listaFrutta: rispostaFrutta.value,
+            
             caricamentoListaFrutta: rispostaFrutta.isLoading,
             erroreListaFrutta: rispostaFrutta.error,
 
@@ -166,6 +183,8 @@ export const FruitsStore = signalStore(
         ]),
 
     }))
+
+    
 
     
 )

@@ -6,7 +6,7 @@
     <mat-spinner class="!h-10 !w-10"></mat-spinner>
     } @else if (erroreListaFrutta()) {
     <p class="text-xl text-green-900 text-bold">Ops! Errore nel caricamento della lista della frutta. Riprova!</p>
-    } @else if (listaFrutta() && listaFruttiFiltrata()?.length === 0) {
+    } @else if (listaFrutta && listaFruttiFiltrata().length === 0) {
     <p class="text-xl text-bold text-blue-900 m-5">Siamo Spiacenti, la ricerca ha dato nessun riscontro, 0 Frutti
         trovati.</p>
     } @else {

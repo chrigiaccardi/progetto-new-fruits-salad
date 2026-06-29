@@ -17,5 +17,5 @@ export class ListaFrutti {
   readonly caricamentoListaFrutta = this.fruitsStore.caricamentoListaFrutta;
   readonly erroreListaFrutta = this.fruitsStore.erroreListaFrutta;
   readonly listaFruttiFiltrata = this.fruitsStore.listaFruttiFiltrata
-  readonly listaFrutta = this.fruitsStore.listaFrutta
+  readonly listaFrutta = this.fruitsStore.listaFrutta()
 }
