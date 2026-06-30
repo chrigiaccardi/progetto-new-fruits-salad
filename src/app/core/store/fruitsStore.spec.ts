@@ -170,5 +170,73 @@ describe('FruitsStore', () => {
         expect(totali.calorie).toBe(148)
         expect(totali.zuccheri).toBe(22)
     })
+
+    it('listaFruttaFiltrata dovrebbe ritornare lista completa', () => {
+        // setto il mock all'interno della lista
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.resetFiltri()
+        expect(store.listaFruttiFiltrata()).toEqual(FRUTTI_MOCK)
+    })
+
+    it('Dovrebbe ritornare solamente i frutti filtrati per famiglia', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setFamigliaSelezionata('Rosaceae')
+        // istanzio i risultati per poterli controllare
+        const risultati = store.listaFruttiFiltrata()
+        expect(risultati.length).toBe(2)
+        // mappo i risultati per controllare i nomi
+        const nomiFrutti = risultati.map(f => f.name)
+        expect(nomiFrutti).toEqual(['Apple', 'Strawberry'])
+    })
+
+    it('Dovrebbe ritornare solamente i frutti filtrati per ordine', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setOrdineSelezionato('Sapindales')
+
+        const risultati = store.listaFruttiFiltrata()
+        expect(risultati.length).toBe(2)
+
+        const nomiFrutti = risultati.map(f => f.name)
+        expect(nomiFrutti).toEqual(['Orange', 'Mango'])
+    })
+    
+    it('Dovrebbe ritornare solamente i frutti filtrati per genere', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setGenereSelezionato('Musa')
+
+        const risultati = store.listaFruttiFiltrata()
+        expect(risultati.length).toBe(1)
+
+        const nomiFrutti = risultati.map(f => f.name)
+        expect(nomiFrutti).toEqual(['Banana'])
+    })
+
+    it('Dovrebbe ritornare solamente i frutti filtrati', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setFamigliaSelezionata('Rosaceae')
+        store.setGenereSelezionato('Fragaria')
+
+        const risultati = store.listaFruttiFiltrata()
+        expect(risultati.length).toBe(1)
+
+        const nomiFrutti = risultati.map(f => f.name)
+        expect(nomiFrutti).toEqual(['Strawberry'])
+    })
+
+    it('Dovrebbe ritornare solamente i frutti ricercati dalla barra di ricerca', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setFiltroRicerca('app')
+
+        const risultati = store.listaFruttiFiltrata()
+        expect(risultati.length).toBe(1)
+
+        const nomiFrutti = risultati.map(f => f.name)
+        expect(nomiFrutti).toEqual(['Apple'])
+
+    })
+
+    
+
+    
 })
 

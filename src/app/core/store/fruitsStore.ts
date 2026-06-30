@@ -3,6 +3,7 @@ import { patchState, signalMethod, signalStore, withComputed, withMethods, withS
 import { Frutto} from '../models/frutto';
 import { computed, effect, inject } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
+import { ListaFrutti } from '../../features/sidenav-content/components/lista-frutti/lista-frutti';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
@@ -38,13 +39,15 @@ export const FruitsStore = signalStore(
             url: `${apiFrutta}/all`,
             method: 'GET'
         }))
+
         // Abbiamo cambiato approccio in questo caso. Al posto di prendere listaFrutta direttamente dalla rispostaFrutta.value
         // Andiamo a sincronizzare listaFrutta, instanziata nello state, con un metodo ed effect:
         // Il metodo sincronizza semplicemente setta i dati in ingresso in listaFrutta
         // Il meccanismo effect legge ogni cambiamento di rispostaFrutta.value e lo va ad inserire in ingresso nel metodo sincronizza
         // con un condizionale che, nel caso rispostaFrutta.value non esistesse, esce
         const sincronizzaListaFrutta = (frutti: Frutto[]) => {
-                patchState(store, {listaFrutta: frutti})
+            patchState(store, { listaFrutta: frutti })
+            return sincronizzaListaFrutta
         }
             
         effect(() => {
@@ -58,6 +61,9 @@ export const FruitsStore = signalStore(
             
             caricamentoListaFrutta: rispostaFrutta.isLoading,
             erroreListaFrutta: rispostaFrutta.error,
+            
+            // istanziamo il metodo sincronizza così che possa anche utilizzarlo nei test
+            sincronizzaListaFrutta,
 
             ricaricareListaFrutti: () => {
                 rispostaFrutta.reload()
