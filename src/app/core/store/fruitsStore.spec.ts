@@ -2,7 +2,6 @@ import { TestBed } from "@angular/core/testing";
 import { FruitsStore } from "./fruitsStore";
 import { Frutto } from "../models/frutto";
 import { HttpTestingController, provideHttpClientTesting } from "@angular/common/http/testing"
-import { ApplicationRef } from "@angular/core";
 import { provideHttpClient } from "@angular/common/http";
 
 // Describe raggruppa i test che appartengono allo stesso argomento (FruitsStore)
@@ -147,6 +146,7 @@ describe('FruitsStore', () => {
         store.aggiungiFrutto(fruttoFake)
         const richiestaPUT = httpTesting.expectOne({ method: 'PUT', url: '/api/fruit' })
         expect(richiestaPUT.request.body).toEqual(fruttoFake)
+        expect(richiestaPUT.request.method).toBe('PUT')
     })
 
     it('Errore aggiungiFrutto', () => {
@@ -211,7 +211,7 @@ describe('FruitsStore', () => {
         expect(nomiFrutti).toEqual(['Banana'])
     })
 
-    it('Dovrebbe ritornare solamente i frutti filtrati', () => {
+    it('Dovrebbe ritornare solamente i frutti filtrati (famiglia + genere)', () => {
         store.sincronizzaListaFrutta(FRUTTI_MOCK)
         store.setFamigliaSelezionata('Rosaceae')
         store.setGenereSelezionato('Fragaria')
@@ -235,8 +235,33 @@ describe('FruitsStore', () => {
 
     })
 
-    
+    it('Dovrebbe dare la listaFruttiFiltrata vuota', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        store.setFamigliaSelezionata('FamigliaInesistente')
 
+        expect(store.listaFruttiFiltrata()).toEqual([])
+    })
+
+    it('Le famiglie disponibili dovrebbero essere tutte e non duplicate', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        const famiglie = store.famiglieDisponibili()
+        expect(famiglie).toEqual(['Rosaceae', 'Musaceae', 'Rutaceae', 'Anacardiaceae'])
+        expect(famiglie.length).toBe(4)
+    })
+
+    it('I Generi disponibili dovrebbero essere tutti e non duplicati', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        const generi = store.generiDisponibili()
+        expect(generi).toEqual(['Malus', 'Musa', 'Citrus', 'Fragaria', 'Mangifera'])
+        expect(generi.length).toBe(5)
+    })
+
+    it('Gli ordini disponibili dovrebbero essere tutti e non duplicati', () => {
+        store.sincronizzaListaFrutta(FRUTTI_MOCK)
+        const ordini = store.ordiniDisponibili()
+        expect(ordini).toEqual(['Rosales', 'Zingiberales', 'Sapindales'])
+        expect(ordini.length).toBe(3)
+    })
     
 })
 
