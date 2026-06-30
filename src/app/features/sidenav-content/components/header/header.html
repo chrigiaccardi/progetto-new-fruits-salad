@@ -12,6 +12,7 @@
 
     }
     <!-- Barra di ricerca e bottone per aprire il dialog -->
+    <label class="text-green-700 font-bold text-lg">Barra di Ricerca:</label>
     <input type="text" matInput placeholder="Cerca il tuo frutto preferito"
         (input)="fruitsStore.setFiltroRicerca(($event.target).value)"
         class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 max-w-[600px] w-full shadow-xl bg-white">
