@@ -2,7 +2,7 @@
 <div class="bg-green-50 h-full flex flex-col items-center">
     <!-- Qua utilizziamo dei condizionali con i breakpoints per visualizzare o meno elementi se siamo su mobile o su desktop -->
     @if (breakpoints.isMobileDevice()) {
-    <button tabindex="-1" mat-icon-button class="mt-2 ml-auto mr-5" (click)="breakpoints.toggleSidenav()">
+    <button aria-label="Apri Pannello Filtri" mat-icon-button class="mt-2 ml-auto mr-5" (click)="breakpoints.toggleSidenav()">
         <mat-icon>close</mat-icon>
     </button>
     }
@@ -18,35 +18,38 @@
     </div>
     <mat-divider class="w-full" />
     }
-    <!-- Seione filtri con bottone reset -->
-    <div class="flex flex-col items-center justify-center m-5 gap-3">
-        <p class="text-green-700 font-bold text-xl">Filtri:</p>
-        <label class="block mt-4 text-sm font-medium">Famiglia</label>
-        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" (change)="onFamigliaCambia($event)" [value]="fruitsStore.famigliaSelezionata()">
+
+    <!-- Seione filtri con bottone reset.
+     Anche qua raggruppiamo i filtri con fieldset e legend -->
+    <fieldset class="flex flex-col items-center justify-center m-5 gap-3">
+        <legend class="text-green-700 font-bold text-xl text-center">Filtri:</legend>
+        <label class="block mt-4 text-sm font-medium" for="famigliaSelect">Famiglia</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" id="famigliaSelect" (change)="onFamigliaCambia($event)" [value]="fruitsStore.famigliaSelezionata()">
             <option value="">Tutte</option>
             @for (fam of famiglieDisponibili(); track fam) {
             <option [value]="fam">{{fam}}</option>
             }
         </select>
 
-        <label class="block mt-4 text-sm font-medium">Genere</label>
-        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" (change)="onGenereCambia($event)" [value]="fruitsStore.genereSelezionato()">
+        <label class="block mt-4 text-sm font-medium" for="genereSelect">Genere</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" id="genereSelect" (change)="onGenereCambia($event)" [value]="fruitsStore.genereSelezionato()">
             <option value="">Tutti</option>
             @for (gen of generiDisponibili(); track gen) {
             <option [value]="gen">{{gen}}</option>
             }
         </select>
 
-        <label class="block mt-4 text-sm font-medium">Ordine</label>
-        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" (change)="onOrdineCambia($event)" [value]="fruitsStore.ordineSelezionato()">
+        <label class="block mt-4 text-sm font-medium" for="ordineSelect">Ordine</label>
+        <select class="border border-gray-300 rounded-lg p-2 w-full bg-white" id="ordineSelect" (change)="onOrdineCambia($event)" [value]="fruitsStore.ordineSelezionato()">
             <option value="">Tutti</option>
             @for (ord of ordiniDisponibili(); track ord) {
             <option [value]="ord">{{ord}}</option>
             }
         </select>
 
-    </div>
+    </fieldset>
+
     <!-- Bottone Reset filtri -->
-    <button matButton class="!text-green-700 shadow-md !bg-yellow-100 mt-4" (click)="fruitsStore.resetFiltri()">Reset
-        Totale Filtri</button>
+    <button matButton aria-label="Reset Totale Filtri" class="!text-green-700 shadow-md !bg-yellow-100 mt-4" (click)="fruitsStore.resetFiltri()">
+        Reset Totale Filtri</button>
 </div>

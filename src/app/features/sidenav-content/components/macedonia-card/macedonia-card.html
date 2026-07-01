@@ -1,5 +1,5 @@
 <!-- Utilizziamo section per accessibilità -->
-<section class="m-5 rounded-xl shadow-xl p-5 bg-gradient-to-r from-orange-100 to-yellow-100 text-lg"
+<section class="m-5 rounded-xl shadow-xl p-5 bg-gradient-to-r from-orange-100 to-yellow-100 text-lg {{fruitsStore.macedonia().length === 0 ? 'opacity-50' : ''}}"
     animate.enter="apri-card">
     <!-- In base a se la macedonia è vuota o no visualizziamo determinati elementi -->
     @if(fruitsStore.macedonia().length === 0){

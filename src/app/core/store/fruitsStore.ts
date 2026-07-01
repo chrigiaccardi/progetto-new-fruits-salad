@@ -3,7 +3,6 @@ import { patchState, signalMethod, signalStore, withComputed, withMethods, withS
 import { Frutto} from '../models/frutto';
 import { computed, effect, inject } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
-import { ListaFrutti } from '../../features/sidenav-content/components/lista-frutti/lista-frutti';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
@@ -77,7 +76,6 @@ export const FruitsStore = signalStore(
                     next: (risposta) => {
                         rispostaFrutta.reload();
                         toaster.success(risposta.success)
-
                     },
                     error: (err) => {
                         patchState(store, { erroreAggiuntaFrutto: `Errore nell'aggiunta del nuovo Frutto: ${err.statusText}` })

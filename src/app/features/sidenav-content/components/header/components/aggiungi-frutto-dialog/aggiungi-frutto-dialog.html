@@ -2,7 +2,7 @@
     <!-- Creiamo due sezioni separate, la parte del titolo e la parte del form -->
     <div class="flex justify-between border-b-2 border-gray-400 pb-2">
         <h2 class="!text-green-700" mat-dialog-title>Aggiungi Nuovo Frutto</h2>
-        <button tabindex="-1" mat-icon-button class="-mt-2 -mr-2" mat-dialog-close>
+        <button mat-icon-button class="-mt-2 -mr-2" mat-dialog-close aria-label="Chiudi Dialog" aria-hidden="true">
             <mat-icon>close</mat-icon>
         </button>
     </div>
@@ -13,70 +13,74 @@
             <div class="flex flex-col md:flex-row gap-3">
                 <div class="flex flex-col p-4 rounded-lg gap-2">
                     <div class="wrapper-input-dialog">
-                        <label class="titolo-label-dialog">Nome Frutto</label>
+                        <label class="titolo-label-dialog" for="nomeFrutto">Nome Frutto</label>
                         <input type="text" formControlName="name" placeholder="Nome Frutto"
-                            class="input-select-dialog">
+                            class="input-select-dialog" id="nomeFrutto">
                     </div>
                     <div class="wrapper-input-dialog">
-                        <label class="titolo-label-dialog">Famiglia</label>
-                        <select formControlName="family" class="input-select-dialog">
+                        <label class="titolo-label-dialog" for="famiglia">Famiglia</label>
+                        <select formControlName="family" class="input-select-dialog" id="famiglia">
                             @for (fam of famiglieDisponibili(); track fam) {
                             <option [value]="fam">{{fam}}</option>
                             }
                         </select>
                     </div>
                     <div class="wrapper-input-dialog">
-                        <label class="titolo-label-dialog">Genere</label>
-                        <select formControlName="genus" class="input-select-dialog">
+                        <label class="titolo-label-dialog" for="genere">Genere</label>
+                        <select formControlName="genus" class="input-select-dialog" id="genere">
                             @for (gen of generiDisponibili(); track gen) {
                             <option [value]="gen">{{gen}}</option> }
                         </select>
                     </div>
                     <div class="wrapper-input-dialog">
-                        <label class="titolo-label-dialog">Ordine</label>
-                        <select formControlName="order" class="input-select-dialog">
+                        <label class="titolo-label-dialog" for="ordine">Ordine</label>
+                        <select formControlName="order" class="input-select-dialog" id="ordine">
                             @for (ord of ordiniDisponibili(); track ord) {
                             <option [value]="ord">{{ord}}</option> }
                         </select>
                     </div>
                 </div>
 
-                <!-- Essendoci un sottogruppo nutritions dobbiamo collegare anche il formGroup a nutritions -->
-                <div class="p-2 rounded-lg" [formGroup]="aggiungiFruttoForm.controls.nutritions">
-                    <p class="flex justify-center mb-2">Valori Nutrizionali per 100g:</p>
+                <!-- Essendoci un sottogruppo nutritions dobbiamo collegare anche il formGroup a nutritions.
+                 Utilizziamo fieldset e legend per raggruppare campi correlati dentro il form,
+                 Fieldset è il contenitore e legend l'etichetta d'intestazione-->
+
+                <fieldset class="p-2 rounded-lg" [formGroup]="aggiungiFruttoForm.controls.nutritions">
+                    <legend class="flex justify-center mb-2">Valori Nutrizionali per 100g:</legend>
                     <div class="grid grid-cols-2 gap-2 !items-center justify-center">
                         <div class="wrapper-input-dialog">
-                            <label class="titolo-label-dialog">Carboidrati</label>
-                            <input type="number" formControlName="carbohydrates"
+                            <label class="titolo-label-dialog" for="carboidrati">Carboidrati</label>
+                            <input type="number" formControlName="carbohydrates" id="carboidrati"
                                 class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
-                            <label class="titolo-label-dialog">Proteine</label>
-                            <input type="number" formControlName="protein"
+                            <label class="titolo-label-dialog" for="proteine">Proteine</label>
+                            <input type="number" formControlName="protein" id="proteine"
                                 class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
-                            <label class="titolo-label-dialog">Grasso</label>
-                            <input type="number" formControlName="fat"
+                            <label class="titolo-label-dialog" for="grasso">Grasso</label>
+                            <input type="number" formControlName="fat" id="grasso"
                                 class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
-                            <label class="titolo-label-dialog">Calorie</label>
-                            <input type="number" formControlName="calories"
+                            <label class="titolo-label-dialog" for="calorie">Calorie</label>
+                            <input type="number" formControlName="calories" id="calorie"
                                 class="input-select-dialog w-20">
                         </div>
                         <div class="wrapper-input-dialog">
-                            <label class="titolo-label-dialog">Zuccheri</label>
-                            <input type="number" formControlName="sugar"
+                            <label class="titolo-label-dialog" for="zuccheri">Zuccheri</label>
+                            <input type="number" formControlName="sugar" id="zuccheri"
                                 class="input-select-dialog w-20">
                         </div>
 
                     </div>
-                </div>
+                </fieldset>
             </div>
+            <p class="text-red-600 border border-green-400 p-1 rounded-lg bg-green-200">* Il frutto verrà inserito in lista solamente dopo l'approvazione degli amministratori.</p>
             <!-- Creiamo il bottone per poter inviare i dati al backend -->
             <div class="flex items-center justify-center">
-                <button matButton type="submit" [disabled]="aggiungiFruttoForm.invalid"
+                <button matButton type="submit" [disabled]="aggiungiFruttoForm.invalid" aria-label="Aggiungi Nuovo Frutto" aria-hidden="true"
                     class=" !shadow-md mt-3 {{aggiungiFruttoForm.valid ? '!bg-green-100 !text-green-700':'!bg-gray-100 !text-gray-700'}}" mat-dialog-close>
                     <mat-icon>add</mat-icon> Nuovo Frutto
                 </button>
