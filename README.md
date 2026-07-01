@@ -64,6 +64,117 @@ L'applicazione permette agli utenti di:
 - **Filtri Select**: Nella sidenav Laterale si trovano i filtri select per famiglia, genere e ordine. Gli elenchi vengono creati dinamicamente dai dati presi dai frutti in arrivo dal backend senza ripetizioni;
 - **Tasto Reset Filtri**: Il tasto reset riporta tutti i valori dei filtri al proprio stato iniziale;
 - **Tasto + Nuovo Frutto**: Il tasto + Nuovo Frutto apre un dialog apposito dove compilare una serie di dati richiesti per l'inserimento di un nuovo frutto nella lista. Il frutto non verrà immediatamente visualizzato visto che deve essere prima approvato dagli amministratori dell'API pubblica FruityVice;
-- **Dialog Aggiungi Nuovo Frutto**: Il dialog si compone di un form dove inserire tutti i dati richiesti dal backend, e del bottone Submit per l'invio dei dati e la richiesta di aggiunta del frutto
 
+### 2. Dialog Aggiungi Frutto
+- Il dialog si compone di un form, dove inserire tutti i dati richiesti dal backend, e del bottone Submit per l'invio dei dati e la richiesta di aggiunta del frutto.
+
+---
+
+## ♻️ Tecnologie e librerie Utilizzate
+
+### 1. Framework e Linguaggi
+
+| Tecnologia | Versione | Descrizione |
+|------------|-----------|------------|
+| **Angular** | 21.2.2 | Framework principale per lo sviluppo frontend |
+| **TypeScript** | 5.9.3 | Linguaggio di programmazione con tipizzazione |
+| **HTML 5** | - | Markup per la struttura delle pagine|
+| **Tailwind** | 4.1.12 | Framework per lo stile |
+
+### 2. Librerie UI e Component
+
+| Libreria | Versione | Utilizzo nell'App |
+|------------|-----------|------------|
+| **@angular/material** | 21.2.8 | Componenti UI Material Design (cards, bottoni, dialog, ecc.) |
+| **@angular/cdk** | 21.2.8 | Component Development Kit | 
+| **@ngxpert/hot-toast** | 6.2.0 | Libreria di toast notification per Angular | 
+
+### 3. Forms
+
+| **@angular/forms** | 21.2.0 | Gestione dei form reattivi e validazione degli stessi|
+
+### 4. HTTP e State Management
+
+| Libreria | Versione | Utilizzo nell'App |
+|------------|-----------|------------|
+| **@angular/common/http** | 21.2.0 | HttpClient per le chiamate API |
+| **@ngrx/signals** | 21.1.0 | SignalStore per una gestione dello stato moderna basata sui signals|
+| **RxJS** | 7.8.0 | Programmazione reattiva per la gestione asincrona
+
+### 5. Testing
+
+| Libreria | Versione | Utilizzo nell'App |
+|------------|-----------|------------|
+| **Vitest** | 4.0.8 | Test runner e framework con sintassi compatibile Jest, usato per scrivere ed eseguire tutti i test dell'applicazione |
+
+### 6. Build e Development
+
+| Libreria | Versione | Utilizzo nell'App |
+|------------|-----------|------------|
+| **@angular/cli** | 21.2.2 | CLI per lo sviluppo |
+| **@angular/build** | 21.2.2 | Sistema di Build |
+
+---
+
+## 🧩 Installazione e Configurazione
+
+### 1. Clonare il Repository
+
+```bash
+# Clona il repository
+git clone <url-del-repository>
+
+# Entra nella Directory del progetto
+cd 2o-progetto-angular-s2i
+```
+### 2. Istallare le dipendenze
+
+```bash
+# Installa tutte le dipendenze npm
+npm install
+```
+
+Questo comando installerà tutte le librerie elencate in `package.json` nella cartella `node_modules/`.
+
+**Tempo stimato**: 2-5 minuti (dipende dalla velocità della connessione)
+
+### 3. Avviare l'Applicazione
+
+```bash
+# Avvia il server di sviluppo
+ng serve
+```
+
+L'applicazione sarà disponibile su: **http://localhost:4200/**
+
+Il server si riavvierà automaticamente quando modifichi i file sorgente (Hot Reload).
+
+### 6. Testing
+
+L'applicazione utilizza **Vitest** sia come linguaggio di scrittura dei test (sintassi `describe`, `it`, `expect`) sia come test runner.
+
+```bash
+# Esegue tutti i test una volta
+npm run test
+
+# Esegue in watch mode (ri-esegue al cambio file)
+npm run test:watch
+
+# Oppure
+ng test
+ng test --include #url singolo file da testare
+```
+
+### Copertura attuale
+
+- **26 file di test**
+- **56 test totali**
+- Componenti, servizi, store, pipe e direttive
+- Tutte le funzionalità principali sono testate
+
+Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con Vite.
+
+![Screenshot Testing]()
+
+---
 

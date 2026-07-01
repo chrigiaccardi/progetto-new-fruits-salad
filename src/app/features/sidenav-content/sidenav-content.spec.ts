@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenavContent } from './sidenav-content';
+import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
+import { FruitsStore } from '../../core/store/fruitsStore';
 
 describe('SidenavContent', () => {
   let component: SidenavContent;
@@ -9,6 +11,7 @@ describe('SidenavContent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SidenavContent],
+      providers: [FruitsStore]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidenavContent);

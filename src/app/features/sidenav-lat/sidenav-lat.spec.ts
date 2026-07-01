@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SidenavLat } from './sidenav-lat';
+import { FruitsStore } from '../../core/store/fruitsStore';
 
 describe('SidenavLat', () => {
   let component: SidenavLat;
@@ -9,6 +10,7 @@ describe('SidenavLat', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [SidenavLat],
+      providers: [FruitsStore]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SidenavLat);
