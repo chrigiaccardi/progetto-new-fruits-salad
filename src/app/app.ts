@@ -12,9 +12,6 @@ import { BreakpointScreen } from './core/services/breakpoint-screen';
   styleUrl: './app.css'
 })
 export class App {
-  // Titolo del progetto visualizzato sulla tab del browser
-  protected readonly title = signal('Fruits Salad Mix');
-
   //importiamo il service dei breakpoints
   breakpoints = inject(BreakpointScreen)
 }

@@ -13,5 +13,4 @@ import { DecimalPipe } from '@angular/common';
 export class MacedoniaCard {
   // Iniettiamo lo store per poterlo utilizzare
   fruitsStore = inject(FruitsStore)
-
 }

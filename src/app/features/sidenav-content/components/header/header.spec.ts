@@ -7,11 +7,22 @@ describe('Header', () => {
   let component: Header;
   let fixture: ComponentFixture<Header>;
 
+  // Istanziamo lo store con i metodi che utilizziamo
+  let fruitsStoreMock: {
+    setFiltroRicerca: ReturnType<typeof vi.fn>
+  }
+
   beforeEach(async () => {
+    // Prima del configureTestingModule dichiariamo i mock dello store e i metodi che utilizziamo, dandogli un valore di partenza
+    fruitsStoreMock = {
+      setFiltroRicerca: vi.fn()
+    }
+
     await TestBed.configureTestingModule({
       imports: [Header],
+      // Nei providers indichiamo che il provide FruitsStore viene sostituito con il mock
       providers: [{
-        provide: FruitsStore
+        provide: FruitsStore, useValue: fruitsStoreMock
       }]
     }).compileComponents();
 
@@ -25,27 +36,3 @@ describe('Header', () => {
   });
 });
 
-
-// Esempio da utenti store
-// Creiamo i mock dei store e metodi che utilizziamo
-    // utentiStoreMock = {
-    //   utenti: signal([]),
-    //   caricamento: signal(false),
-    //   errore: signal(undefined),
-    //   paginaCorrente: signal(2),
-    //   itemXPagina: signal(5),
-    //   paginaSuccessiva: computed(() => utentiStoreMock.paginaCorrente() + 1),
-    //   paginaPrecedente: computed(() => utentiStoreMock.paginaCorrente() - 1),
-    //   opzioniItemPagina: signal([]),
-
-    //   itemPerPagina: vi.fn()
-    // }
-    // erroreRicerca = signal(false)
-
-    // await TestBed.configureTestingModule({
-    //   imports: [ListaUtenti],
-    //   providers: [
-    //     { provide: UtentiStore, useValue: utentiStoreMock },
-    //     provideRouter([])
-    //   ]
-    // }).compileComponents();
