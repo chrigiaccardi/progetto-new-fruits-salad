@@ -34,22 +34,22 @@ L'applicazione permette agli utenti di:
 ## 📷 Screenshot Applicazione
 
 ### Schermata Principale
-![Schermata principale](link)
+![Schermata principale](./public/screenshot/dashboard.png)
 
 ### Card frutta con valori nutrizionali
-![Card frutta con valori nutrizionali]()
+![Card frutta con valori nutrizionali](./public/screenshot/card-frutta.png)
 
 ### Elenco filtri select
-![Elenco filtri select]()
+![Elenco filtri select](./public/screenshot/filtri-select.png)
 
 ### Dialog Aggiungi Nuovo Frutto
-![Dialog Aggiungi NUovo Frutto]()
+![Dialog Aggiungi Nuovo Frutto](./public/screenshot/dialog-nuovo-frutto.png)
 
 ### Macedonia completa di frutti e total valori nutrizionali
-![Macedonia completa di frutti e total valori nutrizionali]()
+![Macedonia completa di frutti e total valori nutrizionali](./public/screenshot/macedonia-con-frutti.png)
 
 ### Modalità Mobile Responsive
-![Modalità Mobile Responsive]()
+![Modalità Mobile Responsive](./public/screenshot/mod-mobile-dashboard.png)
 
 ---
 
@@ -85,9 +85,9 @@ L'applicazione permette agli utenti di:
 
 | Libreria | Versione | Utilizzo nell'App |
 |------------|-----------|------------|
-| **@angular/material** | 21.2.8 | Componenti UI Material Design (cards, bottoni, dialog, ecc.) |
-| **@angular/cdk** | 21.2.8 | Component Development Kit | 
-| **@ngxpert/hot-toast** | 6.2.0 | Libreria di toast notification per Angular | 
+| **@angular/material** | 21.2.14 | Componenti UI Material Design (cards, bottoni, dialog, ecc.) |
+| **@angular/cdk** | 21.2.14 | Component Development Kit | 
+| **@ngxpert/hot-toast** | 6.3.0 | Libreria di toast notification per Angular | 
 
 ### 3. Forms
 
@@ -98,7 +98,7 @@ L'applicazione permette agli utenti di:
 | Libreria | Versione | Utilizzo nell'App |
 |------------|-----------|------------|
 | **@angular/common/http** | 21.2.0 | HttpClient per le chiamate API |
-| **@ngrx/signals** | 21.1.0 | SignalStore per una gestione dello stato moderna basata sui signals|
+| **@ngrx/signals** | 21.1.1 | SignalStore per una gestione dello stato moderna basata sui signals|
 | **RxJS** | 7.8.0 | Programmazione reattiva per la gestione asincrona
 
 ### 5. Testing
@@ -167,14 +167,14 @@ ng test --include #url singolo file da testare
 
 ### Copertura attuale
 
-- **26 file di test**
-- **56 test totali**
-- Componenti, servizi, store, pipe e direttive
+- **10 file di test**
+- **25 test totali**
+- Componenti, servizi, store
 - Tutte le funzionalità principali sono testate
 
 Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con Vite.
 
-![Screenshot Testing]()
+![Screenshot Testing](./public/screenshot/testing.png)
 
 ---
 

@@ -15,6 +15,10 @@ describe('SidenavLat', () => {
     famiglieDisponibili: Signal<string[]>
     generiDisponibili: Signal<string[]>
     ordiniDisponibili: Signal<string[]>
+
+    famigliaSelezionata: Signal<string>
+    genereSelezionato: Signal<string>
+    ordineSelezionato: Signal<string>
   }
 
   beforeEach(async () => {
@@ -30,7 +34,11 @@ describe('SidenavLat', () => {
       ]),
       ordiniDisponibili: computed(() => [
             ...new Set(fruitsStoreMock.listaFrutta()?.map(f => f.order))
-        ]),
+      ]),
+
+      famigliaSelezionata: signal(''),
+      genereSelezionato: signal(''),
+      ordineSelezionato: signal(''),
     }
     await TestBed.configureTestingModule({
       imports: [SidenavLat],

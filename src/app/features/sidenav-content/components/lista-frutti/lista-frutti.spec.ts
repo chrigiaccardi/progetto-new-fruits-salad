@@ -13,6 +13,7 @@ describe('ListaFrutti', () => {
     caricamentoListaFrutta: WritableSignal<boolean>
     erroreListaFrutta: WritableSignal<Error | undefined>
     listaFruttiFiltrata: Signal<Frutto[]>
+    listaFrutta: Signal<Frutto[]>
   }
 
   beforeEach(async () => {
@@ -20,7 +21,8 @@ describe('ListaFrutti', () => {
     fruitsStoreMock = {
       caricamentoListaFrutta: signal(false),
       erroreListaFrutta: signal(undefined),
-      listaFruttiFiltrata: signal([])
+      listaFruttiFiltrata: signal([]),
+      listaFrutta: signal([])
     }
 
     await TestBed.configureTestingModule({

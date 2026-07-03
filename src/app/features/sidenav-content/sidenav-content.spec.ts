@@ -1,45 +1,46 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Component } from '@angular/core';
+import { signal, Signal, WritableSignal } from '@angular/core';
 import { SidenavContent } from './sidenav-content';
 import { FruitsStore } from '../../core/store/fruitsStore';
+import { Frutto } from '../../core/models/frutto';
 
 
 
 describe('SidenavContent', () => {
   let component: SidenavContent;
   let fixture: ComponentFixture<SidenavContent>;
-  // Istanziamo lo store
-  let fruitsStoreMock: {}
-
-  @Component({
-    selector: 'app-header',
-    template: ''
-  })
-  class mockHeader { }
-  
-  @Component({
-    selector: 'app-macedonia-card',
-    template: ''
-  })
-  class mockMacedoniaCard { }
-  
-  @Component({
-    selector: 'app-lista-frutti',
-    template: ''
-  })
-  class mockListaFruttiCard {}
+  // Istanziamo lo store, deve contenere tutti i metodi e valori utilizzati anche nei figli
+  let fruitsStoreMock: {
+    // Header Component
+    setFiltroRicerca: ReturnType<typeof vi.fn>
+    // Macedonia Card
+    macedonia: Signal<Frutto[]>
+    rimuoviDaMacedonia: ReturnType<typeof vi.fn>
+    totaliNutrienti: Signal<object>
+    // Lista Frutti Component
+    caricamentoListaFrutta: WritableSignal<boolean>
+    erroreListaFrutta: WritableSignal<Error | undefined>
+    listaFruttiFiltrata: Signal<Frutto[]>
+    listaFrutta: Signal<Frutto[]>
+  }
+  // Altra opzione si potrebbero utilizzare degli stub component, cioè mock dei componenti figli vuoti
+  // così chè il mockStore sia snello e non debba contenere tutto quanto di tutti i componenti figli
 
   beforeEach(async () => {
     // Dichiariamo lo store
-    fruitsStoreMock = {}
+    fruitsStoreMock = {
+      setFiltroRicerca: vi.fn(),
+      macedonia: signal([]),
+      rimuoviDaMacedonia: vi.fn(),
+      totaliNutrienti: signal({}),
+      caricamentoListaFrutta: signal(false),
+      erroreListaFrutta: signal(undefined),
+      listaFruttiFiltrata: signal([]),
+      listaFrutta: signal([])
+    }
 
     await TestBed.configureTestingModule({
-      imports: [
-        SidenavContent,
-        mockMacedoniaCard,
-        mockHeader,
-        mockListaFruttiCard
-      ],
+      imports: [ SidenavContent],
       providers: [
         { provide: FruitsStore, useValue: fruitsStoreMock }
       ]
