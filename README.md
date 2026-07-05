@@ -125,7 +125,7 @@ L'applicazione permette agli utenti di:
 git clone <url-del-repository>
 
 # Entra nella Directory del progetto
-cd 2o-progetto-angular-s2i
+cd progetto-new-fruits-salad
 ```
 ### 2. Istallare le dipendenze
 
@@ -178,3 +178,51 @@ Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con
 
 ---
 
+## 📂 Struttura Progetto
+
+```
+├── src
+│   ├── app
+│   │   ├── core
+│   │   │   ├── models
+│   │   │   │   └── frutto.ts
+│   │   │   ├── services
+│   │   │   │   └── breakpoint-screen.ts
+│   │   │   └── store
+│   │   │       └── fruitsStore.ts
+│   │   ├── features
+│   │   │   ├── sidenav-content
+│   │   │   │   ├── components
+│   │   │   │      ├── frutta-card
+│   │   │   │      ├── header
+│   │   │   │      │   ├── components
+│   │   │   │      │   │   └── aggiungi-frutto-dialog
+│   │   │   │      ├── lista-frutti
+│   │   │   │      └── macedonia-card
+│   │   │   └── sidenav-lat
+│   │   ├── app.config.ts
+│   │   ├── app.css
+│   │   ├── app.html
+│   │   ├── app.routes.ts
+│   │   ├── app.spec.ts
+│   │   └── app.ts
+│   ├── index.html
+│   ├── main.ts
+│   ├── material-theme.scss
+│   └── styles.css
+├── README.md
+├── angular.json
+├── package-lock.json
+├── package.json
+├── proxy.conf.json
+├── tsconfig.app.json
+├── tsconfig.json
+└── tsconfig.spec.json
+```
+---
+
+## 📩 Contatti
+
+Christian Giaccardi - 📧 [chrigiaccardi@gmail.com](mailto:chrigiaccardi@gmail.com) <br>
+GitHub - [chrigiaccardi](https://github.com/chrigiaccardi) <br>
+LinkedIn - [LinkedIn](https://it.linkedin.com/in/christian-giaccardi-753085180?trk=public_profile_browsemap_profile-result-card_result-card_full-click)
