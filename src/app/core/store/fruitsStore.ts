@@ -1,8 +1,9 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
 import { Frutto} from '../models/frutto';
-import { computed, effect, inject } from '@angular/core';
+import { computed, effect, inject, resource } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
+import { ApiFruitsService } from '../services/api-fruits-service/api-fruits-service';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
@@ -31,13 +32,9 @@ export const FruitsStore = signalStore(
         erroreAggiuntaFrutto: '',
     } as FruitsState),
 
-    withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService)) => {
-        // Risposta dal backend per l lista frutti completa
-        // Utilizziamo HttpResource per avere in risposta anche caricamento ed errori
-        const rispostaFrutta = httpResource<Frutto[]>(() => ({
-            url: `${apiFrutta}/all`,
-            method: 'GET'
-        }))
+    withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService), apiFruitsService = inject(ApiFruitsService)) => {
+        // Abbiamo diviso le responsabilità quindi le chiamate API sono nel service
+        const resource = apiFruitsService.fruitsResource
 
         // Abbiamo cambiato approccio in questo caso. Al posto di prendere listaFrutta direttamente dalla rispostaFrutta.value
         // Andiamo a sincronizzare listaFrutta, instanziata nello state, con un metodo ed effect:
@@ -50,22 +47,22 @@ export const FruitsStore = signalStore(
         }
             
         effect(() => {
-            const frutti = rispostaFrutta.value()
+            const frutti = resource.value()
             if (!frutti) return
             
             sincronizzaListaFrutta(frutti)            
         })
 
         return {
-            
-            caricamentoListaFrutta: rispostaFrutta.isLoading,
-            erroreListaFrutta: rispostaFrutta.error,
+            listaFrutta: resource.value,
+            caricamentoListaFrutta: resource.isLoading,
+            erroreListaFrutta: resource.error,
             
             // istanziamo il metodo sincronizza così che possa anche utilizzarlo nei test
             sincronizzaListaFrutta,
 
             ricaricareListaFrutti: () => {
-                rispostaFrutta.reload()
+                resource.reload()
             },
 
             // Creiamo il metodo per poter aggiungere un nuovo frutto al backend
@@ -74,7 +71,7 @@ export const FruitsStore = signalStore(
             aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
                 http.put<{success: string}> (apiFrutta, nuovoFrutto).subscribe({
                     next: (risposta) => {
-                        rispostaFrutta.reload();
+                        resource.reload();
                         toaster.success(risposta.success)
                     },
                     error: (err) => {

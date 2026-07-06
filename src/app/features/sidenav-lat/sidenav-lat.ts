@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { FruitsStore } from '../../core/store/fruitsStore';
 import { MatAnchor } from "@angular/material/button";
-import { BreakpointScreen } from '../../core/services/breakpoint-screen';
+import { BreakpointScreen } from '../../core/services/breakpoint/breakpoint-screen';
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 

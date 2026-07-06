@@ -5,7 +5,7 @@ import { FruitsStore } from '../../../../core/store/fruitsStore';
 import { MatAnchor, MatIconButton } from "@angular/material/button";
 import { MatIcon } from "@angular/material/icon";
 import { AggiungiFruttoDialog } from './components/aggiungi-frutto-dialog/aggiungi-frutto-dialog';
-import { BreakpointScreen } from '../../../../core/services/breakpoint-screen';
+import { BreakpointScreen } from '../../../../core/services/breakpoint/breakpoint-screen';
 
 @Component({
   selector: 'app-header',
