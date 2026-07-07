@@ -1,7 +1,7 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { inject, Injectable, resource } from '@angular/core';
-import { signalMethod, patchState } from '@ngrx/signals';
 import { Frutto } from '../../models/frutto';
+import { tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +18,20 @@ export class ApiFruitsService {
     method: 'GET'
   }))
 
-  readonly aggiungiFrutto = signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
-      this.http.put<{success: string}> (this.apiFrutta, nuovoFrutto).subscribe({
-          next: (resource) => {
-              this.fruitsResource.reload();
-          },
-          error: (err) => {
-              patchState(store, { erroreAggiuntaFrutto: `Errore nell'aggiunta del nuovo Frutto: ${err.statusText}` })
-              toaster.error(`Errore nell'aggiunta del frutto: ${err.statusText}`)
-          }
-      })
-  })
+  // Vogliamo che il service gestisca HTTP e invece lo store l'observable, quindi pipe ci permette di
+  // fare qualcosa prima del subscribe, tap invece ci permette di fare operazioni collaterali senza consumare l'observable
+  // In ingresso abbiamo il frutto invece in uscita abbiamo la stringa di successo
+  aggiungiFrutto(nuovoFrutto: Omit<Frutto, 'id'>) {
+    return this.http.put<{ success: string }>(this.apiFrutta, nuovoFrutto).pipe(
+        tap(() => this.fruitsResource.reload())
+    )}
 
   ricaricareListaFrutti() {
     this.fruitsResource.reload()
+  }
+
+  // Effettuamo una chiamata API per la ricerca del singolo frutto tramite barra di ricerca
+  ricercaFrutto(nomeFrutto: string) {
+    return this.http.get<Frutto>(`${this.apiFrutta}/${nomeFrutto}`)
   }
 }

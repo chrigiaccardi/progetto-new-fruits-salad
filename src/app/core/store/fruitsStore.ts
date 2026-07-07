@@ -13,6 +13,7 @@ export type FruitsState = {
     filtroRicerca: string;
     macedonia: Frutto[];
     listaFrutta: Frutto[];
+    listaRicercaFrutto: Frutto[];
     famigliaSelezionata: string;
     genereSelezionato: string;
     ordineSelezionato: string;
@@ -26,6 +27,7 @@ export const FruitsStore = signalStore(
         filtroRicerca: '',
         macedonia: [],
         listaFrutta: [],
+        listaRicercaFrutto: [],
         famigliaSelezionata: '',
         genereSelezionato: '',
         ordineSelezionato: '',
@@ -35,6 +37,7 @@ export const FruitsStore = signalStore(
     withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService), apiFruitsService = inject(ApiFruitsService)) => {
         // Abbiamo diviso le responsabilità quindi le chiamate API sono nel service
         const resource = apiFruitsService.fruitsResource
+        
 
         // Abbiamo cambiato approccio in questo caso. Al posto di prendere listaFrutta direttamente dalla rispostaFrutta.value
         // Andiamo a sincronizzare listaFrutta, instanziata nello state, con un metodo ed effect:
@@ -53,8 +56,10 @@ export const FruitsStore = signalStore(
             sincronizzaListaFrutta(frutti)            
         })
 
+        
+
         return {
-            listaFrutta: resource.value,
+
             caricamentoListaFrutta: resource.isLoading,
             erroreListaFrutta: resource.error,
             
@@ -66,12 +71,12 @@ export const FruitsStore = signalStore(
             },
 
             // Creiamo il metodo per poter aggiungere un nuovo frutto al backend
-            // Dietro signalMethod abbiamo il tipo di dati che inviamo invece dietro PUT il tipo di dati che riceviamo
-            // In questo caso string perchè riceviamo un messaggio dal backend di successo
-            aggiungiFrutto: signalMethod<Omit<Frutto, 'id'>>((nuovoFrutto) => {
-                http.put<{success: string}> (apiFrutta, nuovoFrutto).subscribe({
+            // Dopo aver gestito la chiamata HTTP nel service con ritorno di un Observable,
+            // Ci iscriviamo con subscrive per eseguire e completare il metodo
+            // Il SignalMethod lo utilizziamo quando un metodo deve reagire automaticamente al cambio di stato di un valore signal
+            aggiungiFrutto: (nuovoFrutto: Omit<Frutto, 'id'>) => {
+                apiFruitsService.aggiungiFrutto(nuovoFrutto).subscribe({
                     next: (risposta) => {
-                        resource.reload();
                         toaster.success(risposta.success)
                     },
                     error: (err) => {
@@ -79,7 +84,7 @@ export const FruitsStore = signalStore(
                         toaster.error(`Errore nell'aggiunta del frutto: ${err.statusText}`)
                     }
                 })
-            }),
+            },
 
             // Creiamo tre metodi per gestire la Macedonia, aggiungi, rimuovi e svuota.
             aggiungiAMacedonia: (frutto: Frutto) => {
@@ -147,26 +152,24 @@ export const FruitsStore = signalStore(
         // Creiamo la lista frutti filtrata così da poterla filtrare con la barra di ricerca
         listaFruttiFiltrata: computed(() => {
             // Eseguiamo la lettura dei risultati dei filtri
-            const testoRicerca = store.filtroRicerca().toLowerCase().trim();
             const famigliaSelect = store.famigliaSelezionata().toLowerCase().trim();
             const ordineSelect = store.ordineSelezionato().toLowerCase().trim();
             const genereSelect = store.genereSelezionato().toLowerCase().trim();
 
             // Se tutti i filtri sono azzerati allora restituisci la listaFrutta completa come da lettura backend
-            if (!testoRicerca && !famigliaSelect && !ordineSelect && !genereSelect) return store.listaFrutta();
+            if (!famigliaSelect && !ordineSelect && !genereSelect) return store.listaFrutta();
 
             // Eseguiamo un filtraggio della listaFrutta, la callback frutto restituisce, per ogni frutto, true se deve essere tenuto e false se scartato
             return store.listaFrutta()?.filter(frutto => {
                 // In questo caso utilizziamo OR || per dire: se la prima condizione è vera restituisci quella altrimenti l'altra.
                 // Di conseguenza se testoRicerca è vuoto, quindi vero si ferma li, se il testo è riempito, non vuoto, quindi falso e restituisce il filtro
-                const matchNome = !testoRicerca || frutto.name.toLowerCase().includes(testoRicerca);
                 const matchFamiglia = !famigliaSelect || frutto.family.toLowerCase() === famigliaSelect;
                 const matchOrdine = !ordineSelect || frutto.order.toLowerCase() === ordineSelect;
                 const matchGenere = !genereSelect || frutto.genus.toLowerCase() === genereSelect;
 
                 // Da queste condizioni ritorniamo i frutti che matchano le varie condizioni
                 // Un frutto ritorna solamente se rispetta tutti i match contemporaneamente
-                return matchNome && matchFamiglia && matchOrdine && matchGenere
+                return matchFamiglia && matchOrdine && matchGenere
             })
         }),
 
