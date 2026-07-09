@@ -4,6 +4,7 @@ import { Frutto} from '../models/frutto';
 import { computed, effect, inject, resource } from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { ApiFruitsService } from '../services/api-fruits-service/api-fruits-service';
+import { FruttaCard } from '../../features/sidenav-content/components/frutta-card/frutta-card';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
@@ -18,6 +19,8 @@ export type FruitsState = {
     genereSelezionato: string;
     ordineSelezionato: string;
     erroreAggiuntaFrutto: string;
+    caricamentoRicerca: boolean;
+    erroreRicerca: string | null;
 }
 
 export const FruitsStore = signalStore(
@@ -32,9 +35,11 @@ export const FruitsStore = signalStore(
         genereSelezionato: '',
         ordineSelezionato: '',
         erroreAggiuntaFrutto: '',
+        caricamentoRicerca: false,
+        erroreRicerca: null
     } as FruitsState),
 
-    withMethods((store, http = inject(HttpClient), toaster = inject(HotToastService), apiFruitsService = inject(ApiFruitsService)) => {
+    withMethods((store, toaster = inject(HotToastService), apiFruitsService = inject(ApiFruitsService)) => {
         // Abbiamo diviso le responsabilità quindi le chiamate API sono nel service
         const resource = apiFruitsService.fruitsResource
         
@@ -100,11 +105,64 @@ export const FruitsStore = signalStore(
             },
             svuotaMacedonia: () => {
                 patchState(store, {macedonia: [] })
+            }, 
+
+            // Metodo per efferrutare la ricerca tramite Barra di ricerca
+            ricercaFrutto: (nomeFrutto: string) => {
+                apiFruitsService.ricercaFrutto(nomeFrutto).subscribe({
+                    next: (frutto) => {
+                        patchState(store, {
+                            listaRicercaFrutto: frutto ? [frutto] : [],
+                            caricamentoRicerca: false,
+                            erroreRicerca: null
+                        })
+                    },
+                    error: () => {
+                        patchState(store, {
+                            listaRicercaFrutto: [],
+                            caricamentoRicerca: false,
+                            erroreRicerca: 'Ricerca Non Riuscita'
+                        })
+                        toaster.error('Ricerca Non Riuscita')
+                    }
+                })
             },
 
             // Creiamo un metodo per poter settare il filtroRicerca
             setFiltroRicerca: (testo: string) => {
-                patchState(store, {filtroRicerca: testo})
+                patchState(store, { filtroRicerca: testo });
+
+                if (!testo) {
+                    patchState(store, {
+                        listaRicercaFrutto: [],
+                        caricamentoRicerca: false,
+                        erroreRicerca: null
+                    });
+                    return;
+                }
+
+                patchState(store, {
+                    caricamentoRicerca: true,
+                    erroreRicerca: null
+                });
+
+                // Facciamo partire la richiesta HTTP dal settaggio del filtro
+                apiFruitsService.ricercaFrutto(testo).subscribe({
+                    next: (frutto) => {
+                        patchState(store, {
+                            listaRicercaFrutto: [frutto],
+                            caricamentoRicerca: false,
+                            erroreRicerca: null
+                        })
+                    },
+                    error: () => {
+                        patchState(store, {
+                            listaRicercaFrutto: [],
+                            caricamentoRicerca: false,
+                            erroreRicerca: 'Ricerca non Riuscita'
+                        });
+                    }
+                })
             },
 
             // Creiamo il metodo per settare la famiglia, l'ordine e i genere del frutto
@@ -125,6 +183,9 @@ export const FruitsStore = signalStore(
                     famigliaSelezionata: '',
                     ordineSelezionato: '',
                     genereSelezionato: '',
+                    listaRicercaFrutto: [],
+                    caricamentoRicerca: false,
+                    erroreRicerca: null,
                 })
             }
 
@@ -185,6 +246,11 @@ export const FruitsStore = signalStore(
         ordiniDisponibili: computed(() => [
             ...new Set(store.listaFrutta()?.map(f => f.order))
         ]),
+
+        // Questo computed serve per selezionare quale lista visualizzare
+        listaAttiva: computed(() => {
+            return store.filtroRicerca() ? store.listaRicercaFrutto() : store.listaFrutta()
+        })
 
     }))
 

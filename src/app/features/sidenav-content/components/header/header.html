@@ -14,10 +14,10 @@
     <!-- Barra di ricerca e bottone per aprire il dialog -->
     <label class="text-green-700 font-bold text-lg" for="barraDiRicerca">Barra di Ricerca:</label>
     <input type="text" matInput placeholder="Cerca il tuo frutto preferito" id="barraDiRicerca"
-        (input)="fruitsStore.setFiltroRicerca(($event.target).value)"
-        class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 max-w-[600px] w-full shadow-xl bg-white">
+        [formControl]="barraDiRicercaFrutto"
+        class="border border-gray-300 rounded-lg p-2 focus:ring-blue-200 max-w-150 w-full shadow-xl bg-white">
 
-    <button matButton class="!text-green-700 !bg-yellow-100 !shadow-lg" (click)="apriDialogAggiungiFrutto()" aria-label="Nuovo Frutto">
+    <button matButton class="text-green-700! bg-yellow-100! shadow-lg!" (click)="apriDialogAggiungiFrutto()" aria-label="Nuovo Frutto">
         <mat-icon>add</mat-icon>
         Nuovo Frutto
     </button>

@@ -2,19 +2,34 @@
 <section class="flex items-center justify-center mb-10 mt-5">
     <!-- Utilizziamo i condizionali per visualizzati determinati elementi in base alla condizione -->
     @if(caricamentoListaFrutta()) {
-    <p class="text-xl text-bold text-green-900">Caricamento elenco frutta in corso...</p>
-    <mat-spinner class="!h-10 !w-10"></mat-spinner>
+        <p class="text-xl text-bold text-green-900">Caricamento elenco frutta in corso...</p>
+        <mat-spinner class="h-10! w-10!"></mat-spinner>
     } @else if (erroreListaFrutta()) {
-    <p class="text-xl text-green-900 text-bold">Ops! Errore nel caricamento della lista della frutta. Riprova!</p>
-    } @else if (listaFrutta && listaFruttiFiltrata().length === 0) {
-    <p class="text-xl text-bold text-blue-900 m-5">Siamo Spiacenti, la ricerca ha dato nessun riscontro, 0 Frutti
+        <p class="text-xl text-green-900 text-bold">Ops! Errore nel caricamento della lista della frutta. Riprova!</p>
+    } 
+    <!-- Se il filtro ricerca è attivo allora passiamo alla visualizzazione dell'altra lista -->
+    @else if (filtroRicerca()) { 
+        @if (caricamentoRicerca()) {
+            <p class="text-xl text-bold text-green-900">Ricerca frutto in corso...</p>
+            <mat-spinner class="h-10! w-10!"></mat-spinner>
+        } @else if (erroreRicerca() || listaRicercaFrutto().length === 0) {
+            <p class="text-xl text-green-900 text-bold">Ops! La ricerca non ha dato risultati. Riprova!</p>
+        } @else {
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                @for (frutto of listaRicercaFrutto(); track frutto.id){
+                    <app-frutta-card [frutto]="frutto" />
+                }
+            </div>
+        }
+    } @else if (listaFruttiFiltrata().length === 0) {
+        <p class="text-xl text-bold text-blue-900 m-5">Siamo Spiacenti, la ricerca ha dato nessun riscontro, 0 Frutti
         trovati.</p>
     } @else {
         <!-- La lista frutti viene creata attraverso la card riutilizzabile -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-        @for (frutto of listaFruttiFiltrata(); track frutto.id){
-        <app-frutta-card [frutto]="frutto" />
-        }
-    </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            @for (frutto of listaFruttiFiltrata(); track frutto.id){
+                <app-frutta-card [frutto]="frutto" />
+            }
+        </div>
     }
 </section>

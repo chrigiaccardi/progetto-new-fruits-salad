@@ -1,5 +1,5 @@
 import { HttpClient, httpResource } from '@angular/common/http';
-import { inject, Injectable, resource } from '@angular/core';
+import { inject, Injectable} from '@angular/core';
 import { Frutto } from '../../models/frutto';
 import { tap } from 'rxjs';
 
