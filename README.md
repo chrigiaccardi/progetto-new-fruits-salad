@@ -177,7 +177,7 @@ ng test --watch=false
 
 Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con Vite.
 
-![Screenshot Testing](./public/screenshot/testing.png)
+
 
 ---
 
