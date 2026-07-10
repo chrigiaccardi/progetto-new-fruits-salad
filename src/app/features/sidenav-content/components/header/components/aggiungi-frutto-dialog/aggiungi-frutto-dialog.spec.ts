@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AggiungiFruttoDialog } from './aggiungi-frutto-dialog';
 import { FruitsStore } from '../../../../../../core/store/fruitsStore';
-import { computed, provideAppInitializer, signal, Signal } from '@angular/core';
+import { computed, signal, Signal } from '@angular/core';
 import { Frutto } from '../../../../../../core/models/frutto';
 
 describe('AggiungiFruttoDialog', () => {

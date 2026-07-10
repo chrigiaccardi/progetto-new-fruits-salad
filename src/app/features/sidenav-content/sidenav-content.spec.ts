@@ -13,6 +13,7 @@ describe('SidenavContent', () => {
   let fruitsStoreMock: {
     // Header Component
     setFiltroRicerca: ReturnType<typeof vi.fn>
+    filtroRicerca: Signal<string>
     // Macedonia Card
     macedonia: Signal<Frutto[]>
     rimuoviDaMacedonia: ReturnType<typeof vi.fn>
@@ -30,6 +31,7 @@ describe('SidenavContent', () => {
     // Dichiariamo lo store
     fruitsStoreMock = {
       setFiltroRicerca: vi.fn(),
+      filtroRicerca: signal(''),
       macedonia: signal([]),
       rimuoviDaMacedonia: vi.fn(),
       totaliNutrienti: signal({}),

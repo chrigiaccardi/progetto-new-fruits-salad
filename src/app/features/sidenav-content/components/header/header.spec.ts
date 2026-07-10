@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Header } from './header';
 import { FruitsStore } from '../../../../core/store/fruitsStore';
+import { signal, Signal } from '@angular/core';
 
 describe('Header', () => {
   let component: Header;
@@ -9,13 +10,15 @@ describe('Header', () => {
 
   // Istanziamo lo store con i metodi che utilizziamo
   let fruitsStoreMock: {
-    setFiltroRicerca: ReturnType<typeof vi.fn>
+    setFiltroRicerca: ReturnType<typeof vi.fn>,
+    filtroRicerca: Signal<string>
   }
 
   beforeEach(async () => {
     // Prima del configureTestingModule dichiariamo i mock dello store e i metodi che utilizziamo, dandogli un valore di partenza
     fruitsStoreMock = {
-      setFiltroRicerca: vi.fn()
+      setFiltroRicerca: vi.fn(),
+      filtroRicerca: signal('')
     }
 
     await TestBed.configureTestingModule({

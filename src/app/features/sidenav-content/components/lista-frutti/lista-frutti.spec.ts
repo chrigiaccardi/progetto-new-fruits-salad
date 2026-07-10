@@ -14,6 +14,7 @@ describe('ListaFrutti', () => {
     erroreListaFrutta: WritableSignal<Error | undefined>
     listaFruttiFiltrata: Signal<Frutto[]>
     listaFrutta: Signal<Frutto[]>
+    filtroRicerca: Signal<string>
   }
 
   beforeEach(async () => {
@@ -22,7 +23,8 @@ describe('ListaFrutti', () => {
       caricamentoListaFrutta: signal(false),
       erroreListaFrutta: signal(undefined),
       listaFruttiFiltrata: signal([]),
-      listaFrutta: signal([])
+      listaFrutta: signal([]),
+      filtroRicerca: signal('')
     }
 
     await TestBed.configureTestingModule({

@@ -103,19 +103,21 @@ describe('FruitsStore', () => {
         TestBed.configureTestingModule({
             providers: [
                 provideHttpClient(),
-                FruitsStore,
                 provideHttpClientTesting(),
+                FruitsStore,
             ]
         });
         // Recuperiamo  i providers e li assegnamo
-        httpTesting = TestBed.inject(HttpTestingController)
         store = TestBed.inject(FruitsStore)
+        httpTesting = TestBed.inject(HttpTestingController)
+        
 
     });
 
     // Con AfterEach controlliamo che dopo ogni test non rimangono chiamate http pendenti
     afterEach(() => {
-        httpTesting.verify()
+        httpTesting.verify();
+        TestBed.resetTestingModule()
     })
 
     // Inizio Test
@@ -123,16 +125,25 @@ describe('FruitsStore', () => {
         expect(store).toBeTruthy()
     })
 
+    // Essendo che la ricerca parte alla modifica di filtroRicerca, dobbiamo intercettare la richiesta e ritornare un frutto singolo
+    // In questo caso utilizzo il mock di tutti i frutti selezionandone 1. Non posso utilizzare FruttoFake perchè manca di id
     it('setFiltroRicerca imposta filtroRicerca', () => {
         store.setFiltroRicerca('Fragola')
+        const richiestaGET = httpTesting.expectOne({ method: 'GET', url: '/api/fruit/Fragola' })
+        richiestaGET.flush(FRUTTI_MOCK[0])
         expect(store.filtroRicerca()).toBe('Fragola')
     })
 
-    it('resetFiltri dovrebbe resetare famiglia, ordine e genere', () => {
+    it('resetFiltri dovrebbe resetare il campo filtro ricerca,famiglia, ordine e genere', () => {
         store.setFamigliaSelezionata('Famiglia')
         store.setGenereSelezionato('Genere')
         store.setOrdineSelezionato('Ordine')
-        store.setFiltroRicerca('Filtro')
+        store.setFiltroRicerca('Fragola')
+
+        // Anche qua essendo che per testare il reset imposto il filtroRicerca, parte la richiesta HTTP.
+        // Quindi dobbiamo intercettarla e chiuderla con flush
+        const richiestaGET = httpTesting.expectOne({ method: 'GET', url: '/api/fruit/Fragola' })
+        richiestaGET.flush(FRUTTI_MOCK[0])
 
         store.resetFiltri()
 
@@ -140,6 +151,9 @@ describe('FruitsStore', () => {
         expect(store.famigliaSelezionata()).toBe('')
         expect(store.genereSelezionato()).toBe('')
         expect(store.ordineSelezionato()).toBe('')
+       
+        // Essendo che resetFiltri non fa partire essa stessa la richiesta HTTP, utilizziamo ExpectNone per verificare che NON sia PARTITA la richiesta
+        httpTesting.expectNone('/api/fruit')
     })
 
     it('dovrebbe creare un nuovo frutto', () => {
@@ -225,9 +239,12 @@ describe('FruitsStore', () => {
 
     it('Dovrebbe ritornare solamente i frutti ricercati dalla barra di ricerca', () => {
         store.sincronizzaListaFrutta(FRUTTI_MOCK)
-        store.setFiltroRicerca('app')
+        store.setFiltroRicerca('Apple')
 
-        const risultati = store.listaFruttiFiltrata()
+        const richiestaGET = httpTesting.expectOne({ method: 'GET', url: '/api/fruit/Apple' })
+        richiestaGET.flush(FRUTTI_MOCK[0])
+
+        const risultati = store.listaRicercaFrutto()
         expect(risultati.length).toBe(1)
 
         const nomiFrutti = risultati.map(f => f.name)
