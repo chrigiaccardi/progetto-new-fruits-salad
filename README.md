@@ -105,13 +105,13 @@ L'applicazione permette agli utenti di:
 
 | Libreria | Versione | Utilizzo nell'App |
 |------------|-----------|------------|
-| **Vitest** | 4.0.8 | Test runner e framework con sintassi compatibile Jest, usato per scrivere ed eseguire tutti i test dell'applicazione |
+| **Vitest** | 4.1.10 | Test runner e framework con sintassi compatibile Jest, usato per scrivere ed eseguire tutti i test dell'applicazione |
 
 ### 6. Build e Development
 
 | Libreria | Versione | Utilizzo nell'App |
 |------------|-----------|------------|
-| **@angular/cli** | 21.2.2 | CLI per lo sviluppo |
+| **@angular/cli** | 21.2.0 | CLI per lo sviluppo |
 | **@angular/build** | 21.2.2 | Sistema di Build |
 
 ---
@@ -163,12 +163,15 @@ npm run test:watch
 # Oppure
 ng test
 ng test --include #url singolo file da testare
+
+# Test secco senza watch mode
+ng test --watch=false
 ```
 
 ### Copertura attuale
 
-- **10 file di test**
-- **25 test totali**
+- **11 file di test**
+- **26 test totali**
 - Componenti, servizi, store
 - Tutte le funzionalità principali sono testate
 
@@ -181,13 +184,32 @@ Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con
 ## 📂 Struttura Progetto
 
 ```
+├── .angular
+├── public
+│   ├── screenshot
+│   │   ├── card-frutta.png
+│   │   ├── dashboard.png
+│   │   ├── dialog-nuovo-frutto.png
+│   │   ├── filtri-select.png
+│   │   ├── macedonia-con-frutti.png
+│   │   ├── mod-mobile-dashboard.png
+│   │   └── testing.png
+│   ├── favicon.ico
+│   ├── gruppo-di-frutta.png
+│   ├── icons8-carboidrati-96.png
+│   ├── icons8-carne-96.png
+│   ├── icons8-cibo-per-suini-96.png
+│   ├── icons8-energia-calorica-96.png
+│   └── icons8-zucchero-96.png
 ├── src
 │   ├── app
 │   │   ├── core
 │   │   │   ├── models
 │   │   │   │   └── frutto.ts
 │   │   │   ├── services
-│   │   │   │   └── breakpoint-screen.ts
+│   │   │   │   ├── api-fruits-service
+│   │   │   │   └── breakpoint
+│   │   │   │       ├── breakpoint-screen.spec.ts
 │   │   │   └── store
 │   │   │       └── fruitsStore.ts
 │   │   ├── features
@@ -196,7 +218,7 @@ Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con
 │   │   │   │      ├── frutta-card
 │   │   │   │      ├── header
 │   │   │   │      │   ├── components
-│   │   │   │      │   │   └── aggiungi-frutto-dialog
+│   │   │   │      │         └── aggiungi-frutto-dialog
 │   │   │   │      ├── lista-frutti
 │   │   │   │      └── macedonia-card
 │   │   │   └── sidenav-lat
@@ -210,6 +232,10 @@ Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con
 │   ├── main.ts
 │   ├── material-theme.scss
 │   └── styles.css
+├── .editorconfig
+├── .gitignore
+├── .postcssrc.json
+├── .prettierrc
 ├── README.md
 ├── angular.json
 ├── package-lock.json

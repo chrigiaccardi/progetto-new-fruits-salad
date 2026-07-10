@@ -1,10 +1,8 @@
-import { HttpClient, httpResource } from '@angular/common/http';
-import { patchState, signalMethod, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
+import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
 import { Frutto} from '../models/frutto';
-import { computed, effect, inject, resource } from '@angular/core';
+import { computed, effect, inject} from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { ApiFruitsService } from '../services/api-fruits-service/api-fruits-service';
-import { FruttaCard } from '../../features/sidenav-content/components/frutta-card/frutta-card';
 
 
 // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
