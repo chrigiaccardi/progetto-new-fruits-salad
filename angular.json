@@ -35,6 +35,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -59,13 +65,15 @@
         },
         "serve": {
           "builder": "@angular/build:dev-server",
+          "options": {
+            "proxyConfig": "proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "buildTarget": "2o-progetto-angular-s2i:build:production"
             },
             "development": {
-              "buildTarget": "2o-progetto-angular-s2i:build:development",
-              "proxyConfig": "proxy.conf.json"
+              "buildTarget": "2o-progetto-angular-s2i:build:development"
             }
           },
           "defaultConfiguration": "development"

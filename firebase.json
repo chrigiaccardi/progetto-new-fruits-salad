@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "dist/2o-progetto-angular-s2i/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

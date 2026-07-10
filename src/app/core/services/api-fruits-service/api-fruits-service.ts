@@ -2,6 +2,7 @@ import { HttpClient, httpResource } from '@angular/common/http';
 import { inject, Injectable} from '@angular/core';
 import { Frutto } from '../../models/frutto';
 import { tap } from 'rxjs';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -9,9 +10,10 @@ import { tap } from 'rxjs';
 export class ApiFruitsService {
   // Iniettiamo i vari servizi per poterli utilizzare
   private http = inject(HttpClient)
+  private apiFrutta = environment.apiFrutta
 
   // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
-  private apiFrutta:string = '/api/fruit'
+
 
   readonly fruitsResource = httpResource<Frutto[]>(() => ({
     url: `${this.apiFrutta}/all`,
