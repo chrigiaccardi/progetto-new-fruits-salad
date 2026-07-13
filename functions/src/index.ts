@@ -10,7 +10,8 @@
 import { setGlobalOptions } from "firebase-functions";
 import {onRequest} from "firebase-functions/v2/https"
 import * as logger from "firebase-functions/logger";
-import { getFruits, getFruitsByName } from "./services/fruit.service";
+import { aggiungiFrutto, recuperoFrutti, recuperoFruttoDalNome } from "./services/fruit.service";
+import { NuovoFrutto } from "./models/fruit.model";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -33,17 +34,33 @@ setGlobalOptions({ maxInstances: 10 });
 // Al posto di console.log utilizziamo logger, ottimizzato per il backend
 export const api = onRequest(async (richiesta, risposta) => {
     try {
+
+        if (richiesta.method === 'PUT') {
+            const nuovoFrutto = richiesta.body as NuovoFrutto
+
+            if (!nuovoFrutto.name || !nuovoFrutto.genus || !nuovoFrutto.family || !nuovoFrutto.order || !nuovoFrutto.nutritions) {
+                risposta.status(400).json({
+                    message: "Dati mancanti per creare il frutto"
+                })
+                return
+            }
+
+            const risultato = await aggiungiFrutto(nuovoFrutto)
+            risposta.status(200).json(risultato)
+            return
+        }
+
         const path = richiesta.path
         if (path.endsWith("/all")) {
-            const fruits = await getFruits();
-            risposta.status(200).json(fruits);
+            const frutti = await recuperoFrutti();
+            risposta.status(200).json(frutti);
             return;
         }
 
-        const fruitName = path.split("/").pop();
-        if (fruitName) {
-            const fruit = await getFruitsByName(fruitName);
-            risposta.status(200).json(fruit);
+        const nomeFrutto = path.split("/").pop();
+        if (nomeFrutto) {
+            const frutto = await recuperoFruttoDalNome(nomeFrutto);
+            risposta.status(200).json(frutto);
             return;
         }
         risposta.status(404).json({
@@ -54,7 +71,7 @@ export const api = onRequest(async (richiesta, risposta) => {
         logger.error(error)
 
         risposta.status(500).json({
-            message: "Errore durante il recupero dei frutti"
+            message: "Errore interno del server. Riprova!"
         })
     }
 })

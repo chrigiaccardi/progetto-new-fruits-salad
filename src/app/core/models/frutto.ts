@@ -1,6 +1,6 @@
 export interface Frutto {
     name: string;
-    id: number;
+    id?: number;
     family: string;
     genus: string;
     order: string;
@@ -12,3 +12,5 @@ export interface Frutto {
         sugar: number | null;
     }
 }
+
+export type NuovoFrutto = Omit<Frutto, 'id'>

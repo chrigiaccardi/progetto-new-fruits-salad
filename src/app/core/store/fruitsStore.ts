@@ -1,5 +1,5 @@
 import { patchState, signalStore, withComputed, withMethods, withState } from '@ngrx/signals'
-import { Frutto} from '../models/frutto';
+import { Frutto, NuovoFrutto} from '../models/frutto';
 import { computed, effect, inject} from '@angular/core';
 import { HotToastService } from '@ngxpert/hot-toast';
 import { ApiFruitsService } from '../services/api-fruits-service/api-fruits-service';
@@ -77,7 +77,7 @@ export const FruitsStore = signalStore(
             // Dopo aver gestito la chiamata HTTP nel service con ritorno di un Observable,
             // Ci iscriviamo con subscrive per eseguire e completare il metodo
             // Il SignalMethod lo utilizziamo quando un metodo deve reagire automaticamente al cambio di stato di un valore signal
-            aggiungiFrutto: (nuovoFrutto: Omit<Frutto, 'id'>) => {
+            aggiungiFrutto: (nuovoFrutto: NuovoFrutto) => {
                 apiFruitsService.aggiungiFrutto(nuovoFrutto).subscribe({
                     next: (risposta) => {
                         toaster.success(risposta.success)

@@ -12,6 +12,12 @@
         "function": {
           "functionId": "api"
         }
+      },
+      {
+        "source": "/api/fruit**",
+        "function": {
+          "functionId": "api"
+        }
       }
     ]
   },

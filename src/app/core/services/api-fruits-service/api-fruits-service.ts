@@ -1,6 +1,6 @@
 import { HttpClient, httpResource } from '@angular/common/http';
 import { inject, Injectable} from '@angular/core';
-import { Frutto } from '../../models/frutto';
+import { Frutto, NuovoFrutto } from '../../models/frutto';
 import { tap } from 'rxjs';
 import { environment } from '../../../../environments/environment';
 
@@ -23,7 +23,7 @@ export class ApiFruitsService {
   // Vogliamo che il service gestisca HTTP e invece lo store l'observable, quindi pipe ci permette di
   // fare qualcosa prima del subscribe, tap invece ci permette di fare operazioni collaterali senza consumare l'observable
   // In ingresso abbiamo il frutto invece in uscita abbiamo la stringa di successo
-  aggiungiFrutto(nuovoFrutto: Omit<Frutto, 'id'>) {
+  aggiungiFrutto(nuovoFrutto: NuovoFrutto) {
     return this.http.put<{ success: string }>(this.apiFrutta, nuovoFrutto).pipe(
         tap(() => this.fruitsResource.reload())
     )}
