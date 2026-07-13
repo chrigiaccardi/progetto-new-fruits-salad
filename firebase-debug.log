@@ -1,0 +1,897 @@
+[debug] [2026-07-13T12:17:29.902Z] ----------------------------------------------------------------------
+[debug] [2026-07-13T12:17:29.906Z] Command:       /usr/local/bin/firebase /Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase emulators:start
+[debug] [2026-07-13T12:17:29.907Z] CLI Version:   15.8.0
+[debug] [2026-07-13T12:17:29.907Z] Platform:      darwin
+[debug] [2026-07-13T12:17:29.907Z] Node Version:  v20.18.2
+[debug] [2026-07-13T12:17:29.907Z] Time:          Mon Jul 13 2026 14:17:29 GMT+0200 (Central European Summer Time)
+[debug] [2026-07-13T12:17:29.907Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-07-13T12:17:30.698Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-07-13T12:17:30.699Z] > authorizing via signed-in user (chrigiaccardi@gmail.com)
+[info] i  emulators: Starting emulators: functions, hosting, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting, extensions"}}
+[debug] [2026-07-13T12:17:30.705Z] Checked if tokens are valid: false, expires at: 1783945326101
+[debug] [2026-07-13T12:17:30.706Z] Checked if tokens are valid: false, expires at: 1783945326101
+[debug] [2026-07-13T12:17:30.706Z] > refreshing access token with scopes: []
+[debug] [2026-07-13T12:17:30.708Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-07-13T12:17:30.708Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-13T12:17:30.995Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-07-13T12:17:30.995Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-07-13T12:17:31.005Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/fruits-salad-mix-1995/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2026-07-13T12:17:31.006Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/fruits-salad-mix-1995/services/cloudresourcemanager.googleapis.com  x-goog-user-project=fruits-salad-mix-1995
+[debug] [2026-07-13T12:17:32.028Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/fruits-salad-mix-1995/services/cloudresourcemanager.googleapis.com 200
+[debug] [2026-07-13T12:17:32.029Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/fruits-salad-mix-1995/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2026-07-13T12:17:32.036Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:32.036Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:32.036Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/fruits-salad-mix-1995 [none]
+[debug] [2026-07-13T12:17:32.624Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/fruits-salad-mix-1995 200
+[debug] [2026-07-13T12:17:32.625Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/fruits-salad-mix-1995 {"projectNumber":"1086579206887","projectId":"fruits-salad-mix-1995","lifecycleState":"ACTIVE","name":"Fruits Salad Mix","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2026-07-10T19:18:46.874Z"}
+[debug] [2026-07-13T12:17:33.209Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[warn] ⚠  hosting: Hosting Emulator unable to start on port 5000, starting on 5002 instead. {"metadata":{"emulator":{"name":"hosting"},"message":"Hosting Emulator unable to start on port 5000, starting on 5002 instead."}}
+[debug] [2026-07-13T12:17:33.211Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-13T12:17:33.211Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2026-07-13T12:17:33.214Z] Write emulator hub locator at /var/folders/qs/dslfd6_528jd5h8tsbbg_ps40000gn/T/hub-fruits-salad-mix-1995.json
+[debug] [2026-07-13T12:17:33.219Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2026-07-13T12:17:33.579Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-13T12:17:33.579Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-13T12:17:33.579Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2026-07-13T12:17:33.579Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5002}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] ⚠  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, firestore, database, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, firestore, database, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2026-07-13T12:17:33.590Z] defaultcredentials: writing to file /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json
+[debug] [2026-07-13T12:17:33.592Z] Setting GAC to /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json"}}
+[debug] [2026-07-13T12:17:33.592Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:33.592Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:33.592Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/adminSdkConfig [none]
+[debug] [2026-07-13T12:17:34.083Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/adminSdkConfig 200
+[debug] [2026-07-13T12:17:34.084Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/adminSdkConfig {"projectId":"fruits-salad-mix-1995","storageBucket":"fruits-salad-mix-1995.firebasestorage.app"}
+[debug] [2026-07-13T12:17:34.108Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:34.108Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:34.108Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/sites 
+[debug] [2026-07-13T12:17:35.367Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/sites 200
+[debug] [2026-07-13T12:17:35.367Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/sites {"sites":[{"name":"projects/fruits-salad-mix-1995/sites/fruits-salad-mix-1995","defaultUrl":"https://fruits-salad-mix-1995.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2026-07-13T12:17:35.369Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:35.369Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:35.369Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/webApps/-/config [none]
+[debug] [2026-07-13T12:17:35.889Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/webApps/-/config 200
+[debug] [2026-07-13T12:17:35.889Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995/webApps/-/config {"projectId":"fruits-salad-mix-1995","storageBucket":"fruits-salad-mix-1995.firebasestorage.app","apiKey":"AIzaSyDktoSKHiORQ4ojlVUTG4UwaPqvjiVQPfM","authDomain":"fruits-salad-mix-1995.firebaseapp.com","messagingSenderId":"1086579206887","projectNumber":"1086579206887","version":"2"}
+[debug] [2026-07-13T12:17:35.900Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:35.901Z] Checked if tokens are valid: true, expires at: 1783948649995
+[debug] [2026-07-13T12:17:35.902Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995 [none]
+[debug] [2026-07-13T12:17:36.210Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995 200
+[debug] [2026-07-13T12:17:36.211Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fruits-salad-mix-1995 {"projectId":"fruits-salad-mix-1995","projectNumber":"1086579206887","displayName":"Fruits Salad Mix","name":"projects/fruits-salad-mix-1995","resources":{"hostingSite":"fruits-salad-mix-1995"},"state":"ACTIVE","labels":{"firebase":"enabled"},"etag":"1_ac6ad6b1-0d01-4328-b273-76d0e2dcc7ab"}
+[debug] [2026-07-13T12:17:36.212Z] Specified "public" directory "dist/2o-progetto-angular-s2i/browser" does not exist; Deploy to Hosting site "fruits-salad-mix-1995" may fail or be empty.
+[info] i  hosting[fruits-salad-mix-1995]: Serving hosting files from: dist/2o-progetto-angular-s2i/browser {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist/2o-progetto-angular-s2i/browser\u001b[22m"}}
+[info] ✔  hosting[fruits-salad-mix-1995]: Local server: http://127.0.0.1:5002 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5002\u001b[22m\u001b[24m"}}
+[debug] [2026-07-13T12:17:36.314Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions\" for Cloud Functions..."}}
+[debug] [2026-07-13T12:17:36.321Z] Validating nodejs source
+[debug] [2026-07-13T12:17:36.325Z] checkFunctionsSDKVersion was unable to fetch information from NPM Error: spawnSync npm Unknown system error -8
+    at Object.spawnSync (node:internal/child_process:1123:20)
+    at Object.spawnSync (node:child_process:877:24)
+    at Object.spawnSync (pkg/prelude/bootstrap.js:2092:31)
+    at Function.spawnSync [as sync] (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/cross-spawn/index.js:26:23)
+    at Object.getLatestSDKVersion (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js:55:25)
+    at Object.checkFunctionsSDKVersion (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/versioning.js:74:32)
+    at Delegate.validate (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/deploy/functions/runtimes/node/index.js:88:20)
+    at FunctionsEmulator.discoverTriggers (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:321:35)
+    at async FunctionsEmulator.loadTriggers (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:367:34)
+    at async FunctionsEmulator.connect (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/emulator/functionsEmulator.js:283:13)
+[debug] [2026-07-13T12:17:36.326Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "24"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.4.1",
+    "typescript": "^6.0.0"
+  },
+  "private": true
+}
+[debug] [2026-07-13T12:17:36.326Z] Building nodejs source
+[debug] [2026-07-13T12:17:36.326Z] Failed to find version of module node: reached end of search path /Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules
+[warn] ⚠  functions: You've requested "node" version "24", but the standalone Firebase CLI comes with bundled Node "20". 
+[info] ✔  functions: To use a different Node.js version, consider removing the standalone Firebase CLI and switching to "firebase-tools" on npm. 
+[debug] [2026-07-13T12:17:36.329Z] Could not find functions.yaml. Must use http discovery
+[debug] [2026-07-13T12:17:36.335Z] Found firebase-functions binary at '/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/.bin/firebase-functions'
+[info] Serving at port 8911
+
+[debug] [2026-07-13T12:17:37.075Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":10,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2026-07-13T12:17:41.138Z] defaultcredentials: writing to file /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json
+[debug] [2026-07-13T12:17:41.139Z] Setting GAC to /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to /Users/giannimarchiaroautomobili/.config/firebase/chrigiaccardi_gmail_com_application_default_credentials.json"}}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[info] ✔  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api)."}}
+[debug] [2026-07-13T12:17:41.147Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Hosting    │ 127.0.0.1:5002 │ n/a                              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] [hosting] Rewriting /api/fruit/all to http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api for local Function us-central1/api
+[debug] [2026-07-13T12:19:29.568Z] >>> [apiv2][query] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all 
+[debug] [2026-07-13T12:19:29.589Z] [work-queue] {"queuedWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/all-2026-07-13T12:19:29.589Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:19:29.590Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/all-2026-07-13T12:19:29.589Z"],"workRunningCount":1}
+[debug] [2026-07-13T12:19:29.590Z] Accepted request GET /fruits-salad-mix-1995/us-central1/api/api/fruit/all --> us-central1-api
+[debug] [2026-07-13T12:19:29.591Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-07-13T12:19:29.592Z] [functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/all, mapping to path=/api/fruit/all {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/all, mapping to path=/api/fruit/all"}}
+[debug] [2026-07-13T12:19:29.596Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2026-07-13T12:19:29.597Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2026-07-13T12:19:30.241Z] [runtime-status] [7972] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.10.0","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.10.0\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-07-13T12:19:30.242Z] [runtime-status] [7972] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-13T12:19:30.242Z] [runtime-status] [7972] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2026-07-13T12:19:30.242Z] [runtime-status] [7972] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-13T12:19:30.242Z] [runtime-status] [7972] Detected firebase-functions v7+, skipping legacy stubs. {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Detected firebase-functions v7+, skipping legacy stubs."}}
+[debug] [2026-07-13T12:19:30.242Z] [runtime-status] [7972] Resolved module firebase-admin {"declared":true,"installed":true,"version":"13.10.0","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"13.10.0\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js\"}"}}
+[debug] [2026-07-13T12:19:30.260Z] [runtime-status] [7972] Resolved module firebase-functions {"declared":true,"installed":true,"version":"7.2.5","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"7.2.5\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-functions/lib/v2/index.js\"}"}}
+[debug] [2026-07-13T12:19:30.337Z] [runtime-status] [7972] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"13.10.0","resolution":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"13.10.0\",\"resolution\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions/node_modules/firebase-admin/lib/index.js\"}}"}}
+[debug] [2026-07-13T12:19:30.342Z] [runtime-status] [7972] Functions runtime initialized. {"cwd":"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions","node_version":"20.18.2"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Functions runtime initialized. {\"cwd\":\"/Users/giannimarchiaroautomobili/Documents/Christian/Web Development/2o-progetto-angular-s2i/functions\",\"node_version\":\"20.18.2\"}"}}
+[debug] [2026-07-13T12:19:30.343Z] [runtime-status] [7972] Listening to port: /var/folders/qs/dslfd6_528jd5h8tsbbg_ps40000gn/T/fire_emu_0a6b14ddfe4f18f7.sock {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [7972] Listening to port: /var/folders/qs/dslfd6_528jd5h8tsbbg_ps40000gn/T/fire_emu_0a6b14ddfe4f18f7.sock"}}
+[debug] [2026-07-13T12:19:30.421Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE"}}
+[debug] [2026-07-13T12:19:30.421Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-07-13T12:19:30.422Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY"}}
+[debug] [2026-07-13T12:19:30.801Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 379.43725ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 379.43725ms"}}
+[debug] [2026-07-13T12:19:30.803Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE"}}
+[debug] [2026-07-13T12:19:30.803Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-07-13T12:19:30.803Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-07-13T12:19:30.803Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:19:30.806Z] <<< [apiv2][status] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all 200
+[debug] [2026-07-13T12:19:30.806Z] <<< [apiv2][body] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all [stream]
+[info] i  hosting: 127.0.0.1 - - [13/Jul/2026:12:19:30 +0000] "GET /api/fruit/all HTTP/1.1" 200 8425 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Jul/2026:12:19:30 +0000] \"GET /api/fruit/all HTTP/1.1\" 200 8425 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Jul/2026:12:19:30 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://127.0.0.1:5002/api/fruit/all" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Jul/2026:12:19:30 +0000] \"GET /favicon.ico HTTP/1.1\" 404 150 \"http://127.0.0.1:5002/api/fruit/all\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\""}}
+[info] [hosting] Rewriting /api/fruit/all to http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api for local Function us-central1/api
+[debug] [2026-07-13T12:20:03.172Z] >>> [apiv2][query] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all 
+[debug] [2026-07-13T12:20:03.184Z] [work-queue] {"queuedWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/all-2026-07-13T12:20:03.184Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:20:03.185Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/all-2026-07-13T12:20:03.184Z"],"workRunningCount":1}
+[debug] [2026-07-13T12:20:03.185Z] Accepted request GET /fruits-salad-mix-1995/us-central1/api/api/fruit/all --> us-central1-api
+[debug] [2026-07-13T12:20:03.186Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-07-13T12:20:03.187Z] [functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/all, mapping to path=/api/fruit/all {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/all, mapping to path=/api/fruit/all"}}
+[debug] [2026-07-13T12:20:03.187Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-07-13T12:20:03.187Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY"}}
+[debug] [2026-07-13T12:20:03.327Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 140.196459ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 140.196459ms"}}
+[debug] [2026-07-13T12:20:03.328Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE"}}
+[debug] [2026-07-13T12:20:03.328Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-07-13T12:20:03.328Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-07-13T12:20:03.328Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:20:03.330Z] <<< [apiv2][status] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all 200
+[debug] [2026-07-13T12:20:03.330Z] <<< [apiv2][body] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/all [stream]
+[info] i  hosting: 127.0.0.1 - - [13/Jul/2026:12:20:03 +0000] "GET /api/fruit/all HTTP/1.1" 200 8425 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Jul/2026:12:20:03 +0000] \"GET /api/fruit/all HTTP/1.1\" 200 8425 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\""}}
+[info] [hosting] Rewriting /api/fruit/banana to http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api for local Function us-central1/api
+[debug] [2026-07-13T12:20:07.820Z] >>> [apiv2][query] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/banana 
+[debug] [2026-07-13T12:20:07.823Z] [work-queue] {"queuedWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/banana-2026-07-13T12:20:07.823Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:20:07.823Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/fruits-salad-mix-1995/us-central1/api/api/fruit/banana-2026-07-13T12:20:07.823Z"],"workRunningCount":1}
+[debug] [2026-07-13T12:20:07.823Z] Accepted request GET /fruits-salad-mix-1995/us-central1/api/api/fruit/banana --> us-central1-api
+[debug] [2026-07-13T12:20:07.824Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2026-07-13T12:20:07.824Z] [functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/banana, mapping to path=/api/fruit/banana {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/fruits-salad-mix-1995/us-central1/api/api/fruit/banana, mapping to path=/api/fruit/banana"}}
+[debug] [2026-07-13T12:20:07.824Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2026-07-13T12:20:07.826Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: BUSY"}}
+[debug] [2026-07-13T12:20:07.963Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 138.233166ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 138.233166ms"}}
+[debug] [2026-07-13T12:20:07.964Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: IDLE"}}
+[debug] [2026-07-13T12:20:07.964Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2026-07-13T12:20:07.964Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2026-07-13T12:20:07.965Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2026-07-13T12:20:07.966Z] <<< [apiv2][status] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/banana 200
+[debug] [2026-07-13T12:20:07.967Z] <<< [apiv2][body] GET http://127.0.0.1:5001/fruits-salad-mix-1995/us-central1/api/api/fruit/banana [stream]
+[info] i  hosting: 127.0.0.1 - - [13/Jul/2026:12:20:07 +0000] "GET /api/fruit/banana HTTP/1.1" 200 165 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Jul/2026:12:20:07 +0000] \"GET /api/fruit/banana HTTP/1.1\" 200 165 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [13/Jul/2026:12:20:43 +0000] "GET / HTTP/1.1" 404 139 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [13/Jul/2026:12:20:43 +0000] \"GET / HTTP/1.1\" 404 139 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36\""}}
+[debug] [2026-07-13T12:21:44.681Z] Received signal SIGHUP 1
+[info]  
+[info] i  emulators: Received SIGHUP for the first time. Starting a clean shutdown. 
+[info] i  emulators: Please wait for a clean shutdown or send the SIGHUP signal again to stop right now. 
+[debug] [2026-07-13T12:21:44.685Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.687Z] Ignoring signal SIGHUP due to short delay of 6ms
+[debug] [2026-07-13T12:21:44.688Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.689Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.690Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.690Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.690Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.691Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.691Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.692Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.692Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.693Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.693Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.693Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.693Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.693Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.694Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.694Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.695Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.696Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.696Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.697Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.697Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.697Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.697Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.698Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.698Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.699Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.699Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.700Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.700Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.700Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: exited"}}
+[debug] [2026-07-13T12:21:44.700Z] [worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-4259c8b9-8d40-4edf-ab6c-fcc59045ce43]: FINISHED"}}
+[debug] [2026-07-13T12:21:44.700Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.701Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.701Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.701Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.702Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.702Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.702Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.702Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.703Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.704Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.704Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.704Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.704Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.705Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.705Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.705Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2026-07-13T12:21:44.705Z] Error: write EIO
+    at afterWriteDispatched (node:internal/stream_base_commons:161:15)
+    at writeGeneric (node:internal/stream_base_commons:152:3)
+    at Socket._writeGeneric (node:net:958:11)
+    at Socket._write (node:net:970:8)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at Console.log (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston/lib/winston/transports/console.js:87:23)
+    at Console._write (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/modern.js:103:17)
+    at doWrite (/Users/giannimarchiaroautomobili/.cache/firebase/tools/lib/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:390:139)

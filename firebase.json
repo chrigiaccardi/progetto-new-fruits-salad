@@ -8,8 +8,10 @@
     ],
     "rewrites": [
       {
-        "source": "**",
-        "destination": "/index.html"
+        "source": "/api/fruit/**",
+        "function": {
+          "functionId": "api"
+        }
       }
     ]
   },
