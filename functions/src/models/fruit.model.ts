@@ -1,7 +1,6 @@
 /**
  * Creiamo un modello Frutto anche per il backend
  */
-
 export interface Frutto {
     name: string;
     id: number;
@@ -20,5 +19,11 @@ export interface Frutto {
 /**
  * Creiamo un nuovo tipo per Nuovo Frutto
  */
+export type NuovoFrutto = Omit<Frutto, "id">
 
-export type NuovoFrutto = Omit<Frutto, 'id'>
+/**
+ * Messaggio di ritorno della API
+ */
+export interface RispostaMessaggioAPI {
+    message: string
+}

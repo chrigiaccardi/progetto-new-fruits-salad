@@ -7,11 +7,15 @@
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
 
-import { setGlobalOptions } from "firebase-functions";
-import {onRequest} from "firebase-functions/v2/https"
+import {setGlobalOptions} from "firebase-functions";
+import {onRequest} from "firebase-functions/v2/https";
 import * as logger from "firebase-functions/logger";
-import { aggiungiFrutto, recuperoFrutti, recuperoFruttoDalNome } from "./services/fruit.service";
-import { NuovoFrutto } from "./models/fruit.model";
+import {
+  aggiungiFrutto,
+  recuperoFrutti,
+  recuperoFruttoDalNome,
+} from "./services/fruit.service";
+import {NuovoFrutto} from "./models/fruit.model";
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -26,57 +30,58 @@ import { NuovoFrutto } from "./models/fruit.model";
 // functions should each use functions.runWith({ maxInstances: 10 }) instead.
 // In the v1 API, each function can only serve one request per container, so
 // this will be the maximum concurrent request count.
-setGlobalOptions({ maxInstances: 10 });
+setGlobalOptions({maxInstances: 10});
 
-// Metodo per fare la richiesta tramite getFruits, con try e catch gestiamo l'eventuale errore.
-// .json viene utilizzato per eplicitare l'intenzione che sta restituendo un file json di frutti se lo stato della richiesta è 200
+// Metodo per fare la richiesta tramite getFruits,
+// con try e catch gestiamo l'eventuale errore.
+// .json viene utilizzato per eplicitare l'intenzione
+// che sta restituendo un file json di frutti se lo stato della richiesta è 200
 // stessa cosa al contrario un json con messaggio di errore se la risposta è 500
 // Al posto di console.log utilizziamo logger, ottimizzato per il backend
 export const api = onRequest(async (richiesta, risposta) => {
-    try {
+  try {
+    if (richiesta.method === "PUT") {
+      const nuovoFrutto = richiesta.body as NuovoFrutto;
 
-        if (richiesta.method === 'PUT') {
-            const nuovoFrutto = richiesta.body as NuovoFrutto
+      if (
+        !nuovoFrutto.name ||
+        !nuovoFrutto.genus ||
+        !nuovoFrutto.family ||
+        !nuovoFrutto.order ||
+        !nuovoFrutto.nutritions) {
+        risposta.status(400).json({
+          message: "Dati mancanti per creare il frutto",
+        });
+        return;
+      }
 
-            if (!nuovoFrutto.name || !nuovoFrutto.genus || !nuovoFrutto.family || !nuovoFrutto.order || !nuovoFrutto.nutritions) {
-                risposta.status(400).json({
-                    message: "Dati mancanti per creare il frutto"
-                })
-                return
-            }
-
-            const risultato = await aggiungiFrutto(nuovoFrutto)
-            risposta.status(200).json(risultato)
-            return
-        }
-
-        const path = richiesta.path
-        if (path.endsWith("/all")) {
-            const frutti = await recuperoFrutti();
-            risposta.status(200).json(frutti);
-            return;
-        }
-
-        const nomeFrutto = path.split("/").pop();
-        if (nomeFrutto) {
-            const frutto = await recuperoFruttoDalNome(nomeFrutto);
-            risposta.status(200).json(frutto);
-            return;
-        }
-        risposta.status(404).json({
-            message: "Endpoint non trovato"
-        })
-        
-    } catch (error) {
-        logger.error(error)
-
-        risposta.status(500).json({
-            message: "Errore interno del server. Riprova!"
-        })
+      const risultato = await aggiungiFrutto(nuovoFrutto);
+      risposta.status(200).json(risultato);
+      return;
     }
-})
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+    const path = richiesta.path;
+    if (path.endsWith("/all")) {
+      const frutti = await recuperoFrutti();
+      risposta.status(200).json(frutti);
+      return;
+    }
+
+    const nomeFrutto = path.split("/").pop();
+    if (nomeFrutto) {
+      const frutto = await recuperoFruttoDalNome(nomeFrutto);
+      risposta.status(200).json(frutto);
+      return;
+    }
+    risposta.status(404).json({
+      message: "Endpoint non trovato",
+    });
+  } catch (error) {
+    logger.error(error);
+
+    risposta.status(500).json({
+      message: "Errore interno del server. Riprova!",
+    });
+  }
+});
+
