@@ -2,6 +2,7 @@ import express from "express"
 import cors from "cors"
 
 import fruitRoutes from "./routes/fruit.routes"
+import { errorMiddleware } from "./middleware/error.middleware"
 
 // Qui nasce l'istanza Express
 const app = express()
@@ -19,5 +20,8 @@ app.use(express.json())
 
 // Routes - Creazione prefisso davanti alle fruitRoutes
 app.use("/api/fruits", fruitRoutes)
+
+// Impostiamo il Middleware per la gestione degli errori
+app.use(errorMiddleware)
 
 export default app
