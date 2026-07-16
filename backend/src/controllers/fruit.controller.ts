@@ -1,5 +1,7 @@
 import { Request, Response, NextFunction } from "express";
-import { recuperoFrutti, fetchRecuperoFruttoDalNome } from "../services/fruit.service";
+import { aggiungiFruttoService, recuperoFruttiService, recuperoFruttoDalNomeService } from "../services/fruit.service";
+import { NuovoFrutto } from "../models/fruit.model";
+
 
 // la funzione  del controller indica che quando viene chiamata bisogna eseguire questa operazione specifica
 // così con Request e Response typescrpit sa che sono oggetti express quindi req.body, req.params sa cosa significano
@@ -9,7 +11,7 @@ export async function recuperaListaFrutta(
     next: NextFunction
 ) {
     try {
-        const frutti = await recuperoFrutti()
+        const frutti = await recuperoFruttiService()
         res.json(frutti)
     } catch (error) {
         // Con next dichiariamo ad Express che l'errore deve essere passato al middleware per essere gestito
@@ -26,7 +28,7 @@ export async function recuperoFruttoDalNome(
 ) {
     try {
         const { nome } = req.params
-        const frutto = await fetchRecuperoFruttoDalNome(nome)
+        const frutto = await recuperoFruttoDalNomeService(nome)
         res.json(frutto)
     } catch (error) {
         next(error)
@@ -34,16 +36,17 @@ export async function recuperoFruttoDalNome(
 }
 
 // Aggiungiamo Funzione per aggiungere un nuovo frutto
-// export async function aggiungiFrutto(
-//     req: Request,
-//     res: Response,
-//     next: NextFunction,
-// ) {
-//     try {
-//         res.json({
-//             message: "Aggiunta Frutto"
-//         })
-//     } catch (error) {
-//         next(error)
-//     }
-// }
+export async function aggiungiFrutto(
+    req: Request<{},{}, NuovoFrutto>,
+    res: Response,
+    next: NextFunction,
+) {
+    try {
+        const nuovoFrutto = req.body
+        const risposta = await aggiungiFruttoService(nuovoFrutto)
+        res.status(201).json(risposta)
+
+    } catch (error) {
+        next(error)
+    }
+}

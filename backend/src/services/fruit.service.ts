@@ -1,8 +1,8 @@
 import { API } from "../config/api.config"
-import { Frutto } from "../models/fruit.model";
+import { Frutto, NuovoFrutto, RispostaMessaggioAPI } from "../models/fruit.model";
 
 // Funzione per il recupero Lista Frutti
-export async function recuperoFrutti() {
+export async function recuperoFruttiService() {
   const url = `${API.fruityvice.baseUrl}/all`;
 
   const risposta = await fetch(url);
@@ -17,7 +17,7 @@ export async function recuperoFrutti() {
 }
 
 // Funzione per il recupero del singolo Frutto tramite il nome
-export async function fetchRecuperoFruttoDalNome(nome: string) {
+export async function recuperoFruttoDalNomeService(nome: string) {
   const url = `${API.fruityvice.baseUrl}/${nome}`;
 
   const risposta = await fetch(url);
@@ -31,7 +31,22 @@ export async function fetchRecuperoFruttoDalNome(nome: string) {
 }
 
 // Funzione per l'aggiunta di un nuovo frutto
-// export async function aggiungiFrutto(frutto: Frutto) {
-  
-// }
+export async function aggiungiFruttoService(nuovoFrutto: NuovoFrutto) {
+  const url = `${API.fruityvice.baseUrl}`
+
+  const risposta = await fetch(url,{
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(nuovoFrutto),
+  })
+
+  if (!risposta.ok) {
+    throw new Error("Errore durante l'aggiunta del frutto.");
+  }
+
+  const dati = await risposta.json();
+  return dati as RispostaMessaggioAPI;
+}
 

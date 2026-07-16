@@ -17,5 +17,5 @@ export interface Frutto {
 export type NuovoFrutto = Omit<Frutto, "id">
 
 export interface RispostaMessaggioAPI {
-    message: string
+    success: string
 }

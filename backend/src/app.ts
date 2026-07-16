@@ -19,7 +19,7 @@ app.use(
 app.use(express.json())
 
 // Routes - Creazione prefisso davanti alle fruitRoutes
-app.use("/api/fruits", fruitRoutes)
+app.use("/api/fruit", fruitRoutes)
 
 // Impostiamo il Middleware per la gestione degli errori
 app.use(errorMiddleware)

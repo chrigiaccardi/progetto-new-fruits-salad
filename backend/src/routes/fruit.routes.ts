@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { recuperaListaFrutta, recuperoFruttoDalNome } from "../controllers/fruit.controller";
+import { aggiungiFrutto, recuperaListaFrutta, recuperoFruttoDalNome } from "../controllers/fruit.controller";
 
 
 // Con ruoter andiamo ad impostare e configurare gli url per le varie chiamate.
@@ -10,6 +10,6 @@ router.get("/", recuperaListaFrutta)
 
 router.get("/:nome", recuperoFruttoDalNome)
 
-// router.put("/", aggiungiFrutto)
+router.put("/", aggiungiFrutto)
 
 export default router;

@@ -13,10 +13,17 @@ export class ApiFruitsService {
   private apiFrutta = environment.apiFrutta
 
   // Api per richiesta HTTP - Api cambiata per configurazione Proxy per politica Browser CORS
+  // In fase di sviluppo abbiamo utilizzato le api dirette al sito Fruityvice con proxy x CORS.
+  // Abbiamo fatto delle modifiche creando un BFF (Backend For Frontend) per fare da intermediario
+  // quando deployamo su firebase l'applicazione.
+  // Di conseguenza gli url delle chiamate vengono modificati perché il Frontend non chiama più direttamente
+  // il sito ma il backend creato da noi che a catena si occuperà lui di chiamare il sito Fuityvice
+  // e ricevere i dati
 
 
   readonly fruitsResource = httpResource<Frutto[]>(() => ({
-    url: `${this.apiFrutta}/all`,
+    // Vecchio URL: `${this.apiFrutta}/all`
+    url: this.apiFrutta,
     method: 'GET'
   }))
 

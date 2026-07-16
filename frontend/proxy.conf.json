@@ -1,8 +1,9 @@
+
 {
     "/api/fruit": {
-        "target": "https://www.fruityvice.com",
-        "secure": true,
-        "changeOrigin": true,
+        "target": "http://localhost:3000",
+        "secure": false,
+        "changeOrigin": false,
         "logLevel": "debug"
     }
 }
