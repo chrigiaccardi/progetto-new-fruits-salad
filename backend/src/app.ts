@@ -10,11 +10,18 @@ const app = express()
 // Middleware è una funziona che sta nel mezzo tra la richiesta client e la risposta del server.
 // Può controllare qualcosa, modificare, aggiungere info, bloccare ecc...
 // Accetto dati in entrata dal frontend Angular locale
+const allowedOrigins = [
+    "http://localhost:4200",
+    "https://fruits-salad-mix-1995.web.app",
+    "https://fruits-salad-mix-1995.firebaseapp.com"
+];
+
 app.use(
     cors({
-        origin: "http://localhost:4200"
+        origin: allowedOrigins
     })
-)
+);
+
 // Lettura del body JSON
 app.use(express.json())
 
