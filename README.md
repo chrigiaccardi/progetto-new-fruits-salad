@@ -329,7 +329,7 @@ Il backend Express viene deployato tramite Render.
 
 Le variabili ambiente vengono configurate direttamente sulla dashboard Render:
 
-``env
+```env
 FRUITYVICE_URL=https://www.fruityvice.com/api/fruit
 ```
 
