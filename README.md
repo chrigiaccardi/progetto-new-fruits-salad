@@ -46,22 +46,22 @@ l'applicazione è disponibile Online al seguente indirizzo: [Fruits Salad Mix](h
 ## 📷 Screenshot Applicazione
 
 ### Schermata Principale
-![Schermata principale](./public/screenshot/dashboard.png)
+![Schermata principale](.fontend/public/screenshot/dashboard.png)
 
 ### Card frutta con valori nutrizionali
-![Card frutta con valori nutrizionali](./public/screenshot/card-frutta.png)
+![Card frutta con valori nutrizionali](.frontend/public/screenshot/card-frutta.png)
 
 ### Elenco filtri select
-![Elenco filtri select](./public/screenshot/filtri-select.png)
+![Elenco filtri select](.frontend/public/screenshot/filtri-select.png)
 
 ### Dialog Aggiungi Nuovo Frutto
-![Dialog Aggiungi Nuovo Frutto](./public/screenshot/dialog-nuovo-frutto.png)
+![Dialog Aggiungi Nuovo Frutto](.frontend/public/screenshot/dialog-nuovo-frutto.png)
 
 ### Macedonia completa di frutti e total valori nutrizionali
-![Macedonia completa di frutti e total valori nutrizionali](./public/screenshot/macedonia-con-frutti.png)
+![Macedonia completa di frutti e total valori nutrizionali](.frontend/public/screenshot/macedonia-con-frutti.png)
 
 ### Modalità Mobile Responsive
-![Modalità Mobile Responsive](./public/screenshot/mod-mobile-dashboard.png)
+![Modalità Mobile Responsive](.frontend/public/screenshot/mod-mobile-dashboard.png)
 
 ---
 
@@ -317,7 +317,7 @@ ng test --watch=false
 
 Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con Vite.
 
-![Screenshot Testing](./public/screenshot/testing.png)
+![Screenshot Testing](.frontend/public/screenshot/testing.png)
 
 ---
 
