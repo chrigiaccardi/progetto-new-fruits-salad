@@ -46,22 +46,22 @@ l'applicazione è disponibile Online al seguente indirizzo: [Fruits Salad Mix](h
 ## 📷 Screenshot Applicazione
 
 ### Schermata Principale
-![Schermata principale](.fontend/public/screenshot/dashboard.png)
+![Schermata principale](./fontend/public/screenshot/dashboard.png)
 
 ### Card frutta con valori nutrizionali
-![Card frutta con valori nutrizionali](.frontend/public/screenshot/card-frutta.png)
+![Card frutta con valori nutrizionali](./frontend/public/screenshot/card-frutta.png)
 
 ### Elenco filtri select
-![Elenco filtri select](.frontend/public/screenshot/filtri-select.png)
+![Elenco filtri select](./frontend/public/screenshot/filtri-select.png)
 
 ### Dialog Aggiungi Nuovo Frutto
-![Dialog Aggiungi Nuovo Frutto](.frontend/public/screenshot/dialog-nuovo-frutto.png)
+![Dialog Aggiungi Nuovo Frutto](./frontend/public/screenshot/dialog-nuovo-frutto.png)
 
 ### Macedonia completa di frutti e total valori nutrizionali
-![Macedonia completa di frutti e total valori nutrizionali](.frontend/public/screenshot/macedonia-con-frutti.png)
+![Macedonia completa di frutti e total valori nutrizionali](./frontend/public/screenshot/macedonia-con-frutti.png)
 
 ### Modalità Mobile Responsive
-![Modalità Mobile Responsive](.frontend/public/screenshot/mod-mobile-dashboard.png)
+![Modalità Mobile Responsive](./frontend/public/screenshot/mod-mobile-dashboard.png)
 
 ---
 
@@ -82,9 +82,9 @@ l'applicazione è disponibile Online al seguente indirizzo: [Fruits Salad Mix](h
 
 ---
 
-## 🧱 Architettura dell''applicazione
+## 🧱 Architettura dell'applicazione
 
-Il frontend Angular non comunica direttamente con l'API Pubblica Fruityvice.
+Il frontend Angular non comunica direttamente con l'API Pubblica Fruityvice (CORS). <br>
 Durante lo sviluppo Angular utilizza un proxy (proxy.conf.json) per aggirare le limitazioni CORS e dar la possibilità al browser di far visualizzare i dati.
 Il proxy è disponibile esclusivamente in ambiente di sviluppo e non può essere utilizzato in produzione. Quindi ho optato per un backend Express che funge da Backend For Frontend (BFF)
 
@@ -97,19 +97,7 @@ Tutte le richieste passano attraverso il backend Express sviluppato appositament
 
 Questa soluzione rende il frontend indipendente dal servizio esterno e permette una maggiore scalabilità futura.
 
-Utente
-   │
-   ▼
-Firebase Hosting
-   │
-   ▼
-Angular SPA
-   │ HTTP
-   ▼
-Express Backend (BFF)
-   │
-   ▼
-FruityVice API
+Utente ➡️ Firebase Hosting ➡️ Angular SPA ↗️ HTTP ↘️ Express Backend (BFF) ➡️ FruityVice API
 
 ---
 
@@ -133,7 +121,7 @@ Restituisce il singolo frutto ricercato tramite la barra di ricerca
 
 #### Status Code
 
-200 OK
+200 OK <br>
 404 Not Found
 
 ### 3. Aggiunta nuovo frutto
@@ -144,8 +132,8 @@ Riceve un nuovo oggetto frutto tramite body JSON e restituisce un messaggio di s
 
 #### Status Code
 
-200 OK
-422 Unprocessable Entity
+200 OK <br>
+422 Unprocessable Entity <br>
 500 Internal Server Error
 
 ---
@@ -194,6 +182,8 @@ Riceve un nuovo oggetto frutto tramite body JSON e restituisce un messaggio di s
 
 ### 3. Forms
 
+| Libreria | Versione | Utilizzo nell'App |
+|------------|-----------|------------|
 | **@angular/forms** | 21.2.0 | Gestione dei form reattivi e validazione degli stessi|
 
 ### 4. HTTP e State Management
@@ -317,7 +307,7 @@ ng test --watch=false
 
 Vitest è compatibile con Jest, ma molto più veloce grazie all'integrazione con Vite.
 
-![Screenshot Testing](.frontend/public/screenshot/testing.png)
+![Screenshot Testing](./frontend/public/screenshot/testing.png)
 
 ---
 
