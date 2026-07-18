@@ -46,7 +46,7 @@ l'applicazione è disponibile Online al seguente indirizzo: [Fruits Salad Mix](h
 ## 📷 Screenshot Applicazione
 
 ### Schermata Principale
-![Schermata principale](./fontend/public/screenshot/dashboard.png)
+![Schermata principale](./frontend/public/screenshot/dashboard.png)
 
 ### Card frutta con valori nutrizionali
 ![Card frutta con valori nutrizionali](./frontend/public/screenshot/card-frutta.png)
